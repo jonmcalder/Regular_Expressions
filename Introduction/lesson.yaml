@@ -1,0 +1,67 @@
+- Class: meta
+  Course: Regular Expressions
+  Lesson: Introduction
+  Author: Jon Calder
+  Type: Standard
+  Organization: N/A
+  Version: 2.4.2
+
+- Class: text
+  Output: Welcome to this swirl course on the use of Regular Expressions in R. Regular expressions are an extremely powerful tool which 
+    allow one to look for and match specific patterns in a string (or string vector). Regular expressions were originally developed for 
+    the Perl language and have since been implemented in many other languages including R.
+
+- Class: text
+  Output: In this first lesson we will provide a quick introduction to regular expressions (what they are) by way of a few examples, and 
+    provide an overview of the (core) functions in R which leverage regular expressions. Later lessons will explore what kinds of pattern 
+    matching are possible by diving into the different building blocks that can be used in the construction of regular expressions and
+    seeing how these can be combined to create complex filtering or pattern matching.
+    
+- Class: text
+  Output: Any use of regular expressions involves at least two key parameters. Firstly, the pattern parameter, which defines what type 
+    and/or sequence of characters to look for; and secondly the text parameter, which should identify the string content against which 
+    to match this pattern. The pattern itself is always provided in the form of a string so will need to be enclosed in quotation marks. 
+    For example, the pattern 'am' will match the occurrence of the letter 'a' followed immediately by an 'm', regardless of where in the 
+    content string they occur and whether or not there are other characters before the 'a' or after the 'm'.
+
+- Class: mult_question
+  Output: If we were to use pattern = 'am' with text = 'Do you like green eggs and ham', would there be a match?
+  AnswerChoices: Yes;No
+  CorrectAnswer: Yes
+  AnswerTests: omnitest(correctVal= 'Yes')
+  Hint: Note that the word ham at the end of the text string contains an 'a' followed immediately by an 'm'.
+
+- Class: text
+  Output: Note furthermore that regular expressions are case sensitive by default (although we'll see later that one can choose to have 
+    R ignore case in regular expressions). This means that with pattern = 'Am' and the same text as the above case there would be no 
+    match.
+
+- Class: mult_question
+  Output: If we were to use pattern = 'Sam-i-am' with text = 'I do not like them, Sam-I-am. I do not like green eggs and ham.', would 
+    there be a match?
+  AnswerChoices: Yes;No
+  CorrectAnswer: No
+  AnswerTests: omnitest(correctVal= 'No')
+  Hint: Note the case of the letter 'i' in the pattern and in the text.
+  
+- Class: mult_question
+  Output: If we want to match only the very beginning of the text string, we can include a '^' at the beginning of the pattern string. 
+    So for example pattern = '^Sam' would match the text strings 'Sam-I-am' and 'Sam I am', but not the text string 
+    'I do not like them, Sam-I-am.' What pattern would match 'I' exclusively at the beginning of the text string?
+  AnswerChoices: pattern = 'I';pattern = 'I^'; pattern = '^I' 
+  CorrectAnswer: pattern = '^I'
+  AnswerTests: omnitest(correctVal= "pattern = '^I'")
+  Hint: The '^' must appear at the start of the pattern.
+
+- Class: mult_question
+  Output: Similarly if we want to match only the very end of the text string, we can include a '$' at the end of the pattern string. 
+    So for example pattern = 'Sam$' would match the text string 'I am Sam', but not the text string 
+    'I do not like them, Sam-I-am.' What pattern would match 'I am'exclusively at the end of the text string?
+  AnswerChoices: pattern = 'I am';pattern = '$I am'; pattern = 'I am$' 
+  CorrectAnswer: pattern = 'I am$'
+  AnswerTests: omnitest(correctVal= "pattern = 'I am$'")
+  Hint: The '$' must appear at the end of the pattern.
+
+- Class: text
+  Output: In base R, there are seven different functions which leverage the power of regular expressions to achieve slightly different 
+    outcomes. They are grep, grepl, regexpr, gregexpr, regexec, sub and gsub.
