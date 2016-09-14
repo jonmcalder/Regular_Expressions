@@ -9,6 +9,10 @@
 - Class: text
   Output: In this lesson, we will look at the use of character classes in regular expressions. These are convenient character categories 
     which allow one to easily match words, spaces, digits etc.
+    
+- Class: text
+  Output: There are actually two flavors of character classes. One uses '[:' and ':]' around a predefined name inside square brackets and 
+    the other uses '\' along with a special character. In many cases these are interchangeable as we'll soon see.
   
 - Class: text
   Output: In the next lesson, we'll explore the use of quantifiers in regular expressions. Quantifiers specify how many repetitions of 
