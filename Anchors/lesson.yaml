@@ -1,0 +1,16 @@
+- Class: meta
+  Course: Regular_Expressions
+  Lesson: Anchors
+  Author: Jon
+  Type: Standard
+  Organization: N/A
+  Version: 2.4.2
+  
+- Class: text
+  Output: In this lesson, we will look at the use of anchors in regular expressions. Anchors allow one to specify where within the string a 
+    particular pattern should be matched. In the first lesson, you were already exposed to two different anchors. ^ to match at the start 
+    of a string, and $ to match at the end of a string.
+  
+- Class: text
+  Output: In the next lesson, we'll explore the use of character classes in regular expressions. These provide flexible ways to match 
+    different types or categories of characters.

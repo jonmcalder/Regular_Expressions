@@ -16,7 +16,7 @@
     info() in the R console to see navigation options within swirl and swirl lessons.
 
 - Class: text
-  Output: In this first lesson we will provide a quick introduction to regular expressions (what they are) by way of a few examples, and 
+  Output: In this first lesson we will provide a quick introduction to regular expressions by way of a few examples, and 
     provide an overview of the (core) functions in R which leverage regular expressions. Later lessons will explore what kinds of pattern 
     matching are possible by diving into the different building blocks that can be used in the construction of regular expressions and
     seeing how these can be combined to create complex filtering or pattern matching.
@@ -160,3 +160,7 @@
     many other R functions which can take regular expressions as an input parameter e.g. strsplit, list.files, ls, apropos, browseEnv, 
     help.search etc (see the relevant help pages for more information on these functions).None of these will be explored in this course, 
     but should all be easy to make use of once you have a good handle on how to write regular expressions.
+    
+- Class: text
+  Output: In the next lesson, we'll start exploring regular expressions themselves in more depth by looking at anchors.
+    
