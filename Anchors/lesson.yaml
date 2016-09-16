@@ -32,7 +32,7 @@
     following the word.
   CorrectAnswer: grep(pattern = 'like\\b', x = DrSeuss)
   AnswerTests: omnitest(correctVal="[1]  1  3  5  7  9 11 13 15")
-  Hint: Simply use pattern = 'like\\b'
+  Hint: Remember you need to use '\\b' due to R's handling of '\' as an escape character.
   
 - Class: cmd_question
   Output: A '\B' is used to match a non-word boundary - it is precisely the opposite of '\b'. Use grep to check for the occurence of the 

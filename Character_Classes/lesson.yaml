@@ -14,6 +14,13 @@
   Output: There are actually two flavors of character classes. One uses '[:' and ':]' around a predefined name inside square brackets and 
     the other uses '\' along with a special character. In many cases these are interchangeable as we'll soon see.
   
+- Class: cmd_question
+  Output: You can indicate a digit character with '[:digit:]' (or alternatively with '\d'). We have created a vector of alphanumeric 
+    characters in the 'passwords' object. Use grepl to check which of these passwords contain a digit.
+  CorrectAnswer: grepl(pattern = '[:digit:]', x = passwords)
+  AnswerTests: omnitest(correctExpr="grepl(pattern = '[:digit:]', x = passwords)")
+  Hint: Simply use grepl with pattern = '[:digit:]'
+  
 - Class: text
   Output: In the next lesson, we'll explore the use of quantifiers in regular expressions. Quantifiers specify how many repetitions of 
     a pattern should be matched.
