@@ -24,7 +24,8 @@
 - Class: text
   Output: Any use of regular expressions involves at least two key parameters. Firstly, the pattern parameter, which defines what type 
     and/or sequence of characters to look for; and secondly the text parameter, which should identify the string content against which 
-    to match this pattern. The pattern itself is always provided in the form of a string so will need to be enclosed in quotation marks. 
+    to match this pattern. The pattern itself is always provided in the form of a string so will need to be enclosed in quotation marks.
+    R recognizes both single and double quotes.
     For example, the pattern 'am' will match the occurrence of the letter 'a' followed immediately by an 'm', regardless of where in the 
     content string they occur and whether or not there are other characters before the 'a' or after the 'm'.
 
@@ -51,7 +52,9 @@
 - Class: mult_question
   Output: If we want to match only the very beginning of the text string, we can include a '^' at the beginning of the pattern string. 
     So for example pattern = '^Sam' would match the text strings 'Sam-I-am' and 'Sam I am', but not the text string 
-    'I do not like them, Sam-I-am.' What pattern would match 'I' exclusively at the beginning of the text string?
+    'I do not like them, Sam-I-am.' '^' is a so-called metacharacter, which do not have a literal meaning in a string (such as 'a'). 
+    As you will see in upcoming sessions, metacharacters and how they can be combined are a building block of regular expressions. For
+    now, let us look at the following question. What pattern would match 'I' exclusively at the beginning of the text string?
   AnswerChoices: pattern = 'I';pattern = 'I^'; pattern = '^I' 
   CorrectAnswer: pattern = '^I'
   AnswerTests: omnitest(correctVal= "pattern = '^I'")
@@ -72,7 +75,7 @@
     and differ mainly in terms of functionality and the type of output they provide.
     
 - Class: text
-  Output: Note that as with most/all things R, these functions are vectorized. grep, grepl, regexpr, gregexpr and regexec search for 
+  Output: Note that as with most/all things in R, these functions are vectorized. grep, grepl, regexpr, gregexpr and regexec search for 
     matches to the pattern argument within each element of a character vector. sub and gsub leverage regular expressions to facilitate 
     'find and replace' functionality within elements of a character vector. We will now go through an example or two with each function 
     to help you get familiar with them. Some are a little easier to get a handle on quickly, but hopefully over time you will start 
@@ -141,7 +144,7 @@
   
 - Class: cmd_question
   Output: sub can be used to replace the first match of a regular expression in each element of a character vector. As before, you'll 
-    need to provide a 'pattern' argument in the form of a regular expression and a 'text' vector x. In addition you'll need to provide 
+    need to provide a 'pattern' argument in the form of a regular expression and a 'text' vector x. In addition, you'll need to provide 
     a 'replacement' string. Use sub(pattern, replacement, x) to replace the first instance of 'like' in each line of the DrSeuss extract
     with 'not like'.
   CorrectAnswer: sub(pattern = 'like', replacement = 'not like', x = DrSeuss)
@@ -150,7 +153,8 @@
 
 - Class: cmd_question
   Output: gsub is just like sub except it will replace all matches (not just the first) in each element of a character vector. Use gsub 
-    to replace all instances of the letter 'e' in each line of the DrSeuss extract with the number '3'.
+    to replace all instances of the letter 'e' in each line of the DrSeuss extract with '3'. Note that all elements within a string 
+    must be characters. Hence, '3' needs to be supplied as a string, not as a number.
   CorrectAnswer: gsub(pattern = 'e', replacement = '3', x = DrSeuss)
   AnswerTests: omnitest(correctExpr = "gsub(pattern = 'e', replacement = '3', x = DrSeuss)")
   Hint: pattern = 'e', replacement = '3' and x = DrSeuss
@@ -158,8 +162,9 @@
 - Class: text
   Output: Note that over and above the seven 'primary' functions for regular expressions that we have looked at here, there are of course 
     many other R functions which can take regular expressions as an input parameter e.g. strsplit, list.files, ls, apropos, browseEnv, 
-    help.search etc (see the relevant help pages for more information on these functions).None of these will be explored in this course, 
-    but should all be easy to make use of once you have a good handle on how to write regular expressions.
+    help.search etc (see the relevant help pages for more information on these functions). None of these will be explored in this course, 
+    but should all be easy to make use of once you have a good handle on how to write regular expressions. Also note that you are not required
+    to know all these function off-hands, since they are quite similar. You can always use the help pages for these functions as a cheat sheet.
     
 - Class: text
   Output: In the next lesson, we'll start exploring regular expressions themselves in more depth by looking at anchors.
