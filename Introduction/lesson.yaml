@@ -52,18 +52,19 @@
 - Class: mult_question
   Output: If we want to match only the very beginning of the text string, we can include a '^' at the beginning of the pattern string. 
     So for example pattern = '^Sam' would match the text strings 'Sam-I-am' and 'Sam I am', but not the text string 
-    'I do not like them, Sam-I-am.' '^' is a so-called metacharacter, which do not have a literal meaning in a string (such as 'a'). 
-    As you will see in upcoming sessions, metacharacters and how they can be combined are a building block of regular expressions. For
-    now, let us look at the following question. What pattern would match 'I' exclusively at the beginning of the text string?
+    'I do not like them, Sam-I-am.' '^' is a so-called metacharacter, which does not have a literal interpretation in a string (such as 
+    'a'). As you will see in upcoming lessons, metacharacters can be combined together in different ways and are a key building block 
+    for regular expressions. For now, let us look at the following question. What pattern would match 'I' exclusively at the beginning 
+    of the text string?
   AnswerChoices: pattern = 'I';pattern = 'I^'; pattern = '^I' 
   CorrectAnswer: pattern = '^I'
   AnswerTests: omnitest(correctVal= "pattern = '^I'")
   Hint: The '^' must appear at the start of the pattern.
 
 - Class: mult_question
-  Output: Similarly if we want to match only the very end of the text string, we can include a '$' at the end of the pattern string. 
-    So for example pattern = 'Sam$' would match the text string 'I am Sam', but not the text string 
-    'I do not like them, Sam-I-am.' What pattern would match 'I am'exclusively at the end of the text string?
+  Output: Similarly if we want to match only the very end of the text string, we can include the metacharacter '$' at the end of the 
+    pattern string. So for example pattern = 'Sam$' would match the text string 'I am Sam', but not the text string 
+    'I do not like them, Sam-I-am.' What pattern would match 'I am' exclusively at the end of the text string?
   AnswerChoices: pattern = 'I am';pattern = '$I am'; pattern = 'I am$' 
   CorrectAnswer: pattern = 'I am$'
   AnswerTests: omnitest(correctVal= "pattern = 'I am$'")
@@ -132,7 +133,7 @@
     either -1 if there is no match, or a sequence of integers with the starting positions of the match and substrings 
     corresponding to parenthesized subexpressions of the 'pattern' parameter. This means that with pattern = "awe(some)" and 
     text = "awesome", you would get back a list containing c(1,4) along with the match.length attributes c(7,4) reflecting that 
-    "awesome" is matched at position 1, and "some" is matched at position 4. Use  regexec to match the occurrence of 'like' and 'e' in 
+    "awesome" is matched at position 1, and "some" is matched at position 4. Use regexec to match the occurrence of 'like' and 'e' in 
     each line of the DrSeuss extract.
   CorrectAnswer: regexec(pattern = 'lik(e)', text = DrSeuss)
   AnswerTests: omnitest(correctExpr = "regexec(pattern = 'lik(e)', text = DrSeuss)")
