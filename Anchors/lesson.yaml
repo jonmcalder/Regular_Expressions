@@ -7,40 +7,51 @@
   Version: 2.4.2
   
 - Class: text
-  Output: In this very short lesson, we will look at the use of anchors in regular expressions. Anchors allow one to specify where within the string a 
-    particular pattern should be matched. In the first lesson, you were already exposed to two different anchors. ^ to match at the start 
-    of a string, and $ to match at the end of a string. Let's do an example of each again quickly just to refresh your memory.
+  Output: In this very short lesson, we will look at the use of anchors in 
+    regular expressions. Anchors allow one to specify where within the string a 
+    particular pattern should be matched. In the first lesson, you were already 
+    exposed to two different anchors. '^' to match at the start of a string, and 
+    '$' to match at the end of a string. Let's do an example of each again 
+    quickly just to refresh your memory.
   
 - Class: cmd_question
-  Output: As with the previous lesson, we've loaded a text extract into the object 'DrSeuss'. Use grep to check for occurence of the 
-    letter 'I' at the start of each line from this extract.
+  Output: As with the previous lesson, we've loaded a text extract into the 
+    object 'DrSeuss'. Use grep to check for occurence of the letter 'I' at the 
+    start of each line from this extract.
   CorrectAnswer: grep(pattern = '^I', x = DrSeuss)
   AnswerTests: omnitest(correctExpr="grep(pattern = '^I', x = DrSeuss)")
   Hint: Remember to include '^' at the start of the pattern.
   
 - Class: cmd_question
-  Output: Use grep to check for occurence of the word 'like' at the end of each line from this extract.
+  Output: Use grep to check for occurence of the word 'like' at the end of each 
+    line from this extract.
   CorrectAnswer: grep(pattern = 'like$', x = DrSeuss)
   AnswerTests: omnitest(correctExpr="grep(pattern = 'like$', x = DrSeuss)")
   Hint: Remember to include '$' at the end of the pattern.
   
 - Class: cmd_question
-  Output: A '\b' is used to match a word boundary - it can be used to match an empty space on either end of a word. Note that R treats 
-    backslashes as escape values for character constants (in addition to regular expressions which also do so), so when supplying 
-    '\b' you'll need to escape it with another backslash i.e. '\\b'
-    Use grep to check for the occurence of the word 'like' again, but this time only look for a match where there is a word boundary 
-    following the word.
+  Output: A '\b' is used to match a word boundary - it can be used to match an 
+    empty space on either end of a word. Note that R treats backslashes as 
+    escape values for character constants (in addition to regular expressions 
+    which also do so), so when supplying '\b' you'll need to escape it with 
+    another backslash i.e. '\\b'
+    Use grep to check for the occurence of the word 'like' again, but this time 
+    only look for a match where there is a word boundary following the word.
   CorrectAnswer: grep(pattern = 'like\\b', x = DrSeuss)
   AnswerTests: omnitest(correctVal="[1]  1  3  5  7  9 11 13 15")
-  Hint: Remember you need to use '\\b' due to R's handling of '\' as an escape character.
+  Hint: Remember you need to use '\\b' due to R's handling of '\' as an escape 
+    character.
   
 - Class: cmd_question
-  Output: A '\B' is used to match a non-word boundary - it is precisely the opposite of '\b'. Use grep to check for the occurence of the 
-    letter 'e' at a non-word boundary in each line of the provided text extract.
+  Output: A '\B' is used to match a non-word boundary - it is precisely the 
+    opposite of '\b'. Use grep to check for the occurence of the letter 'e' at a 
+    non-word boundary in each line of the provided text extract.
   CorrectAnswer: grep(pattern = '\\Be\\B', x = DrSeuss)
   AnswerTests: omnitest(correctVal="[1]  2  3  6  7  8  9 10 11 12 14 15")
-  Hint: Note that you'll need to check for a non-word boundary on both sides. Also remember you need to use a double backslash in R.
+  Hint: Note that you'll need to check for a non-word boundary on both sides. 
+    Also remember you need to use a double backslash in R.
   
 - Class: text
-  Output: In the next lesson, we'll explore the use of character classes in regular expressions. These provide flexible ways to match 
-    different types or categories of characters.
+  Output: In the next lesson, we'll explore the use of character classes in 
+    regular expressions. These provide flexible ways to match different types or 
+    categories of characters.
