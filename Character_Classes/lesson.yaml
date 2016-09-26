@@ -20,12 +20,12 @@
 - Class: cmd_question
   Output: You can indicate a digit character with '[:digit:]' (or alternatively 
     with '\d'). We have created a vector of alphanumeric characters in the 
-    'passwords' object. Use grepl to check which of these passwords end with a 
-    digit.
-  CorrectAnswer: grepl(pattern = '[:digit:]$', x = passwords)
-  AnswerTests: omnitest(correctExpr="grepl(pattern = '[:digit:]$', x = passwords)")
+    'passwords' object. Use grepl to check which of these passwords contain 
+    digits.
+  CorrectAnswer: grepl(pattern = '[:digit:]', x = passwords)
+  AnswerTests: omnitest(correctExpr="grepl(pattern = '[:digit:]', x = passwords)")
     # include '\d' answer variant?
-  Hint: Simply use grepl with a pattern that combines '$' and '[:digit:]'
+  Hint: Simply use grepl with pattern = '[:digit:]'
 
 # Escaped character classes not working in swirl?
 #- Class: cmd_question
@@ -38,26 +38,37 @@
   
 - Class: cmd_question
   Output: You can match any lower-case letter character with '[:lower:]'. Use 
-    grepl to check which of the passwords begin with a lower-case character.
-  CorrectAnswer: grepl(pattern = '^[:lower:]', x = passwords)
+    grepl to check which of the passwords contain a lower-case character.
+  CorrectAnswer: grepl(pattern = '[:lower:]', x = passwords)
   AnswerTests: omnitest(correctExpr="grepl(pattern = '[:lower:]', x = passwords)")
+  Hint: pattern = '[:lower:]'
+  
+- Class: cmd_question
+  Output: Next try and check which of the passwords begin with a lower-case 
+    character.
+  CorrectAnswer: grepl(pattern = '^[:lower:]', x = passwords)
+  AnswerTests: omnitest(correctExpr="grepl(pattern = '^[:lower:]', x = passwords)")
   Hint: Simply combine '^' and '[:lower:]' in the regex pattern.
   
 - Class: cmd_question
   Output: You can match any upper-case letter character with '[:upper:]'. Use 
-    grepl to check which of the passwords end with an upper-case character.
-  CorrectAnswer: grepl(pattern = '[:upper:]$', x = passwords)
-  AnswerTests: omnitest(correctExpr="grepl(pattern = '[:upper:]$', x = passwords)")
+    grepl to check which of the passwords contain an upper-case character.
+  CorrectAnswer: grepl(pattern = '[:upper:]', x = passwords)
+  AnswerTests: omnitest(correctExpr="grepl(pattern = '[:upper:]', x = passwords)")
+  Hint: pattern = '[:upper:]'
+  
+- Class: cmd_question
+  Output: Now check which of the passwords end with an upper-case character.
+  CorrectAnswer: grepl(pattern = '[:upper:]', x = passwords)
+  AnswerTests: omnitest(correctExpr="grepl(pattern = '[:upper:]', x = passwords)")
   Hint: Simply combine '$' and '[:upper:]' in the regex pattern.
-
-- Class: text
-  Output: The pattern '[a-z]' is equivalent to '[:lower:]' i.e. it will match 
-    any lower case letter character. Similarly, '[A-Z]' is equivalent to 
-    '[:upper:]' and will match any upper case letter character.
+  
 - Class: text
   Output: The pattern '[:alpha:]' will match any alphabetic characters (lower or
     upper-case), and is thus equivalent to '[[:lower:][:upper:]]' or '[A-z]'.
+  
 - Class: text
-  Output: In the next lesson, we'll explore the use of quantifiers in regular 
-    expressions. Quantifiers specify how many repetitions of a pattern should be 
-    matched.
+  Output: In the next lesson, we'll explore the use of groups and ranges in 
+    regular expressions. By investigating these we will start to explore how 
+    different pattern concepts can be mixed together to build more complex 
+    expressions.
