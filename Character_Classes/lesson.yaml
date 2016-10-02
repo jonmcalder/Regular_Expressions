@@ -12,93 +12,93 @@
     easily match words, spaces, digits etc.
     
 - Class: text
-  Output: There are actually two flavors of character classes. One uses '[:' and
-    ':]' around a predefined name inside square brackets and the other uses '\' 
+  Output: There are actually two flavors of character classes. One uses "[:" and
+    ":]" around a predefined name inside square brackets and the other uses "\" 
     along with a special character. In many cases these are interchangeable as 
     we'll soon see.
   
 - Class: cmd_question
-  Output: You can indicate a digit character with '[:digit:]' (or alternatively 
-    with '\d'). We have created a vector of alphanumeric characters in the 
+  Output: You can indicate a digit character with "[:digit:]" (or alternatively 
+    with "\d"). We have created a vector of alphanumeric characters in the 
     'passwords' object. Use grepl to check which of these passwords contain 
     digits.
-  CorrectAnswer: grepl(pattern = '[:digit:]', x = passwords)
+  CorrectAnswer: grepl(pattern = "[:digit:]", x = passwords)
   AnswerTests: omnitest(correctExpr="grepl(pattern = '[:digit:]', x = passwords)")
-    # include '\d' answer variant?
-  Hint: Simply use grepl with pattern = '[:digit:]'
+    # include "\d" answer variant?
+  Hint: Simply use grepl with pattern = "[:digit:]"
 
 # Escaped character classes not working in swirl?
 #- Class: cmd_question
-#  Output: You can indicate a non-digit character with '\D'. Use grepl to check 
+#  Output: You can indicate a non-digit character with "\D". Use grepl to check 
 #    which of these passwords start with a non-digit character.
-#  CorrectAnswer: grepl(pattern = '^\\D', x = passwords)
+#  CorrectAnswer: grepl(pattern = "^\\D", x = passwords)
 #  AnswerTests: omnitest(correctExpr="grepl(pattern = '^\\D', x = passwords)")
 #  Hint: Simply use grepl with a pattern which combines the 'starts with' anchor 
-#    ('^') with '\\D'
+#    ("^") with "\\D"
   
 - Class: cmd_question
-  Output: You can match any lower-case letter character with '[:lower:]'. Use 
+  Output: You can match any lower-case letter character with "[:lower:]". Use 
     grepl to check which of the passwords contain a lower-case character.
-  CorrectAnswer: grepl(pattern = '[:lower:]', x = passwords)
+  CorrectAnswer: grepl(pattern = "[:lower:]", x = passwords)
   AnswerTests: omnitest(correctExpr="grepl(pattern = '[:lower:]', x = passwords)")
-  Hint: pattern = '[:lower:]'
+  Hint: pattern = "[:lower:]"
   
 - Class: cmd_question
   Output: Next try and check which of the passwords begin with a lower-case 
     character.
-  CorrectAnswer: grepl(pattern = '^[:lower:]', x = passwords)
+  CorrectAnswer: grepl(pattern = "^[:lower:]", x = passwords)
   AnswerTests: omnitest(correctExpr="grepl(pattern = '^[:lower:]', x = passwords)")
-  Hint: Remember the '^' anchor from the previous lesson? Simply combine '^' 
-    and '[:lower:]' in the regex pattern.
+  Hint: Remember the "^" anchor from the previous lesson? Simply combine "^" 
+    and "[:lower:]" in the regex pattern.
   
 - Class: cmd_question
-  Output: You can match any upper-case letter character with '[:upper:]'. Use 
+  Output: You can match any upper-case letter character with "[:upper:]". Use 
     grepl to check which of the passwords contain an upper-case character.
-  CorrectAnswer: grepl(pattern = '[:upper:]', x = passwords)
+  CorrectAnswer: grepl(pattern = "[:upper:]", x = passwords)
   AnswerTests: omnitest(correctExpr="grepl(pattern = '[:upper:]', x = passwords)")
-  Hint: pattern = '[:upper:]'
+  Hint: pattern = "[:upper:]"
   
 - Class: cmd_question
   Output: Now check which of the passwords end with an upper-case character.
-  CorrectAnswer: grepl(pattern = '[:upper:]$', x = passwords)
+  CorrectAnswer: grepl(pattern = "[:upper:]$", x = passwords)
   AnswerTests: omnitest(correctExpr="grepl(pattern = '[:upper:]$', x = passwords)")
-  Hint: Simply combine '$' and '[:upper:]' in the regex pattern.
+  Hint: Simply combine "$" and "[:upper:]" in the regex pattern.
   
 - Class: text
-  Output: The pattern '[:alpha:]' will match any alphabetic characters (lower or
-    upper-case), and is thus equivalent to '[[:lower:][:upper:]]', or 
-    '[[A-Z][a-z]]'.
+  Output: The pattern "[:alpha:]" will match any alphabetic characters (lower or
+    upper-case), and is thus equivalent to "[[:lower:][:upper:]]", or 
+    "[[A-Z][a-z]]".
   
 - Class: text
   Output: Note that in order to combine (union) character classes of the form 
-    '[:...:]' within a pattern they need to be enclosed in square brackets e.g. 
-    '[[:lower:][:upper:]]' as above. Patterns like '[a-z]' however can be combined 
-    together without additional square brackets, so that '[[A-Z][0-9]]' and 
-    '[A-Z0-9]' are equivalent. By contrast '[A-Z][0-9]' is not equivalent to 
+    "[:...:]" within a pattern they need to be enclosed in square brackets e.g. 
+    "[[:lower:][:upper:]]" as above. Patterns like "[a-z]" however can be combined 
+    together without additional square brackets, so that "[[A-Z][0-9]]" and 
+    "[A-Z0-9]" are equivalent. By contrast "[A-Z][0-9]" is not equivalent to 
     these since it is a two character pattern.
   
 - Class: mult_question
-  Output: The pattern '[:alnum:]' matches any alphanumeric characters - in other 
+  Output: The pattern "[:alnum:]" matches any alphanumeric characters - in other 
     words alphabetic characters plus digit characters. Which of the below patterns
-    is equivalent to '[:alnum:]'?
-  AnswerChoices: pattern = '[[:alpha:][:digit:]]'; pattern = '[:alpha:][:digit:]';
-    pattern = '[:alpha:][0-9]'; pattern = '[[a-z][0-9]]'
-  CorrectAnswer: pattern = '[[:alpha:][:digit:]]'
+    is equivalent to "[:alnum:]"?
+  AnswerChoices: pattern = "[[:alpha:][:digit:]]"; pattern = "[:alpha:][:digit:]";
+    pattern = "[:alpha:][0-9]"; pattern = "[[a-z][0-9]]"
+  CorrectAnswer: pattern = "[[:alpha:][:digit:]]"
   AnswerTests: omnitest(correctVal= "pattern = '[[:alpha:][:digit:]]'")
   Hint: Remember we need both upper and lower case characters as well as digits, 
     and these need to be combined into a single character pattern.
     
 - Class: text
-  Output: Another equivalent expression for '[:alnum:]' is '[A-z0-9]'. This relies
-    on the use of '[A-z]' in place of '[[A-Z][a-z]]'.
+  Output: Another equivalent expression for "[:alnum:]" is "[A-z0-9]". This relies
+    on the use of "[A-z]" in place of "[[A-Z][a-z]]".
   
 - Class: mult_question
-  Output: The expression '[:xdigit:]' can be used to match hexadecimal digits 
+  Output: The expression "[:xdigit:]" can be used to match hexadecimal digits 
     i.e. 0 1 2 3 4 5 6 7 8 9 A B C D E F a b c d e f. Which of the below 
-    patterns is equivalent to '[:xdigit:]'?
-  AnswerChoices: pattern = '[A-F0-9a-f]'; pattern = '[[0-9][a-f]]'; 
-    pattern = '[[:alpha:][0-9]]'; pattern = '[[0-9][A-F]]'
-  CorrectAnswer: pattern = '[A-F0-9a-f]'
+    patterns is equivalent to "[:xdigit:]"?
+  AnswerChoices: pattern = "[A-F0-9a-f]"; pattern = "[[0-9][a-f]]"; 
+    pattern = "[[:alpha:][0-9]]"; pattern = "[[0-9][A-F]]"
+  CorrectAnswer: pattern = "[A-F0-9a-f]"
   AnswerTests: omnitest(correctVal= "pattern = '[A-F0-9a-f]'")
   Hint: Remember that in addition to digits 0 through 9, hexadecimal digits 
     include both the upper and lower-case letters a through f.

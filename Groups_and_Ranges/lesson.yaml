@@ -12,32 +12,32 @@
     together in different ways to build more complex expressions.
     
 - Class: text
-  Output: The key metacharacters here are square and round brackets - '[', ']', 
-    '(' and ')'. Square brackets are used to define a set or range of 
+  Output: The key metacharacters here are square and round brackets - "[", "]", 
+    "(" and ")". Square brackets are used to define a set or range of 
     characters, where one (or more) must usually be matched in the text. For 
-    example, the pattern '[abc]' will match any text which contains either an 'a'
-    or a 'b' or 'c' (as opposed to the pattern 'abc' which would only match text
-    containing all three letters 'abc' adjacent to each other and in that 
+    example, the pattern "[abc]" will match any text which contains either an "a"
+    or a "b" or "c" (as opposed to the pattern "abc" which would only match text
+    containing all three letters "abc" adjacent to each other and in that 
     order at some point in the string).
 
 - Class: text
-  Output: Ranges can also be specified using a '-'. As an example, the pattern 
-    '[a-z]' is equivalent to the character class '[:lower:]' i.e. it will match 
-    any lower case letter character. Similarly, '[A-Z]' is equivalent to 
-    '[:upper:]' and will match any upper case letter character.
+  Output: Ranges can also be specified using a "-". As an example, the pattern 
+    "[a-z]" is equivalent to the character class "[:lower:]" i.e. it will match 
+    any lower case letter character. Similarly, "[A-Z]" is equivalent to 
+    "[:upper:]" and will match any upper case letter character.
   
 - Class: mult_question
-  Output: Which of the below patterns would match 'xxxxyyyyyzzzzz'
-  AnswerChoices: pattern = 'xyz';pattern = '[a-w]';pattern = '[yz]';pattern = 'a-z'
-  CorrectAnswer: pattern = '[yz]'
+  Output: Which of the below patterns would match "xxxxyyyyyzzzzz"
+  AnswerChoices: pattern = "xyz";pattern = "[a-w]";pattern = "[yz]";pattern = "a-z"
+  CorrectAnswer: pattern = "[yz]"
   AnswerTests: omnitest(correctVal="pattern = '[yz]'")
   Hint: Expressions not contained square brackets require an exact match.
   
 - Class: text
   Output: Character classes can also be combined within square brackets to 
-    specify more broad ranges. The pattern '[[:lower:][:upper:]]' will match any 
+    specify more broad ranges. The pattern "[[:lower:][:upper:]]" will match any 
     alphabetic characters (lower or upper-case), and is thus equivalent to 
-    '[:alpha:]'. Another equivalent pattern would be '[A-z]'.
+    "[:alpha:]". Another equivalent pattern would be "[A-z]".
   
 - Class: text
   Output: In the next lesson, we'll explore the use of quantifiers in regular 

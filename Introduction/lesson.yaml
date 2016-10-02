@@ -42,60 +42,60 @@
     identify the string content against which to match this pattern. The pattern 
     itself is always provided in the form of a string so will need to be enclosed 
     in quotation marks. R recognizes both single and double quotes. For example, 
-    the pattern 'am' will match the occurrence of the letter 'a' followed 
-    immediately by an 'm', regardless of where in the content string they occur 
-    and whether or not there are other characters before the 'a' or after the 
-    'm'.
+    the pattern "am" will match the occurrence of the letter "a" followed 
+    immediately by an "m", regardless of where in the content string they occur 
+    and whether or not there are other characters before the "a" or after the 
+    "m".
 
 - Class: mult_question
-  Output: If we were to use pattern = 'am' with text = 
-    'Do you like green eggs and ham', would there be a match?
+  Output: If we were to use pattern = "am" with text = 
+    "Do you like green eggs and ham", would there be a match?
   AnswerChoices: Yes;No
   CorrectAnswer: Yes
-  AnswerTests: omnitest(correctVal= 'Yes')
-  Hint: Note that the word ham at the end of the text string contains an 'a' 
-    followed immediately by an 'm'.
+  AnswerTests: omnitest(correctVal= "Yes")
+  Hint: Note that the word ham at the end of the text string contains an "a" 
+    followed immediately by an "m".
 
 - Class: text
   Output: Note furthermore that regular expressions are case sensitive by default 
     (although we'll see later that one can choose to have R ignore case in 
-    regular expressions). This means that with pattern = 'Am' and the same text 
+    regular expressions). This means that with pattern = "Am" and the same text 
     as the above case there would be no match.
 
 - Class: mult_question
-  Output: If we were to use pattern = 'Sam-i-am' with 
-    text = 'I do not like them, Sam-I-am. I do not like green eggs and ham.', 
+  Output: If we were to use pattern = "Sam-i-am" with 
+    text = "I do not like them, Sam-I-am. I do not like green eggs and ham.", 
     would there be a match?
   AnswerChoices: Yes;No
   CorrectAnswer: No
-  AnswerTests: omnitest(correctVal= 'No')
-  Hint: Note the case of the letter 'i' in the pattern and in the text.
+  AnswerTests: omnitest(correctVal= "No")
+  Hint: Note the case of the letter "i" in the pattern and in the text.
   
 - Class: mult_question
   Output: If we want to match only the very beginning of the text string, we can 
-    include a '^' at the beginning of the pattern string. So for example 
-    pattern = '^Sam' would match the text strings 'Sam-I-am' and 'Sam I am', but 
-    not the text string 'I do not like them, Sam-I-am.' '^' is a so-called 
+    include a "^" at the beginning of the pattern string. So for example 
+    pattern = "^Sam" would match the text strings "Sam-I-am" and "Sam I am", but 
+    not the text string "I do not like them, Sam-I-am." "^" is a so-called 
     metacharacter, which does not have a literal interpretation in a string (such 
-    as 'a'). As you will see in upcoming lessons, metacharacters can be combined 
+    as "a"). As you will see in upcoming lessons, metacharacters can be combined 
     together in different ways and are a key building block for regular 
     expressions. For now, let us look at the following question. What pattern 
-    would match 'I' exclusively at the beginning of the text string?
-  AnswerChoices: pattern = 'I';pattern = 'I^'; pattern = '^I' 
-  CorrectAnswer: pattern = '^I'
+    would match "I" exclusively at the beginning of the text string?
+  AnswerChoices: pattern = "I";pattern = "I^"; pattern = "^I" 
+  CorrectAnswer: pattern = "^I"
   AnswerTests: omnitest(correctVal= "pattern = '^I'")
-  Hint: The '^' must appear at the start of the pattern.
+  Hint: The "^" must appear at the start of the pattern.
 
 - Class: mult_question
   Output: Similarly if we want to match only the very end of the text string, we 
-    can include the metacharacter '$' at the end of the pattern string. So for 
-    example pattern = 'Sam$' would match the text string 'I am Sam', but not the 
-    text string 'I do not like them, Sam-I-am.' What pattern would match 'I am' 
+    can include the metacharacter "$" at the end of the pattern string. So for 
+    example pattern = "Sam$" would match the text string "I am Sam", but not the 
+    text string "I do not like them, Sam-I-am." What pattern would match "I am" 
     exclusively at the end of the text string?
-  AnswerChoices: pattern = 'I am';pattern = '$I am'; pattern = 'I am$' 
-  CorrectAnswer: pattern = 'I am$'
+  AnswerChoices: pattern = "I am";pattern = "$I am"; pattern = "I am$" 
+  CorrectAnswer: pattern = "I am$"
   AnswerTests: omnitest(correctVal= "pattern = 'I am$'")
-  Hint: The '$' must appear at the end of the pattern.
+  Hint: The "$" must appear at the end of the pattern.
 
 - Class: text
   Output: In base R, there are seven 'primary' functions which leverage the power 
@@ -119,24 +119,24 @@
     the legendary Dr Seuss has been loaded into the object 'DrSeuss'. Inspect 
     this text extract now using str().
   CorrectAnswer: str(DrSeuss)
-  AnswerTests: omnitest(correctExpr = 'str(DrSeuss)')
-  Hint: By entering 'str(DrSeuss)', you can inspect the structure of the provided 
+  AnswerTests: omnitest(correctExpr = "str(DrSeuss)")
+  Hint: By entering "str(DrSeuss)", you can inspect the structure of the provided 
     text extract
     
 - Class: cmd_question
   Output: By default, grep returns a vector of indices indicating which elements 
     of the 'text' vector match the provided 'pattern'. Use grep(pattern, x), 
     where x specifies the text (character) vector, to check which lines in the 
-    DrSeuss extract contain the phrase 'not like'.
-  CorrectAnswer: grep('not like', DrSeuss)
+    'DrSeuss' extract contain the phrase "not like".
+  CorrectAnswer: grep("not like", DrSeuss)
   AnswerTests: omnitest(correctExpr = "grep(pattern = 'not like', x = DrSeuss)")
-  Hint: Call grep with pattern = 'not like' and x = DrSeuss
+  Hint: Call grep with pattern = "not like" and x = DrSeuss
 
 - Class: cmd_question
   Output: Using grep with value = TRUE, returns the matching elements of the 
-    'text' vector. Use grep(pattern, x) to see the lines in the DrSeuss extract 
-    which contain the phrase 'not like'.
-  CorrectAnswer: grep(pattern = 'not like', x = DrSeuss, value = TRUE)
+    'text' vector. Use grep(pattern, x) to see the lines in the 'DrSeuss' extract 
+    which contain the phrase "not like".
+  CorrectAnswer: grep(pattern = "not like", x = DrSeuss, value = TRUE)
   AnswerTests: omnitest(correctExpr = "grep(pattern = 'not like', x = DrSeuss, value = TRUE)")
   Hint: Call grep just as before but this time include value = TRUE
   
@@ -145,29 +145,29 @@
     i.e. it returns TRUE or FALSE for each element of the 'text' vector, 
     indicating whether or not the element matches the provided pattern. Use 
     grepl(pattern, x) to see which lines in the DrSeuss extract which contain 
-    the phrase 'not like'.
-  CorrectAnswer: grepl(pattern = 'not like', x = DrSeuss)
+    the phrase "not like".
+  CorrectAnswer: grepl(pattern = "not like", x = DrSeuss)
   AnswerTests: omnitest(correctExpr = "grepl(pattern = 'not like', x = DrSeuss)")
-  Hint: Call grepl with pattern = 'not like' and x = DrSeuss
+  Hint: Call grepl with pattern = "not like" and x = DrSeuss
   
 - Class: cmd_question
   Output: regexpr will return an integer vector of the same length as the 'text' 
     vector, with the number indicating the starting position of the first pattern 
     match within each element (or -1 if there is no match). Use regexpr to find 
-    the first occurence of the letter 'e' in each line of the DrSeuss extract.
-  CorrectAnswer: regexpr(pattern = 'e', text = DrSeuss)
+    the first occurence of the letter "e" in each line of the 'DrSeuss' extract.
+  CorrectAnswer: regexpr(pattern = "e", text = DrSeuss)
   AnswerTests: omnitest(correctExpr = "regexpr(pattern = 'e', text = DrSeuss)")
-  Hint: Call regexpr with pattern = 'e' and text = DrSeuss
+  Hint: Call regexpr with pattern = "e" and text = DrSeuss
   
 - Class: cmd_question
   Output: gregexpr is similar to regexpr, except instead of returning an integer 
     vector it will return a list, with each list element indicating the starting 
     positions of all pattern matches within the respective element of the text 
     (or -1 if there is no match). Use gregexpr to find all occurences of the 
-    letter 'e' in each line of the DrSeuss extract.
-  CorrectAnswer: gregexpr(pattern = 'e', text = DrSeuss)
+    letter "e" in each line of the 'DrSeuss' extract.
+  CorrectAnswer: gregexpr(pattern = "e", text = DrSeuss)
   AnswerTests: omnitest(correctExpr = "gregexpr(pattern = 'e', text = DrSeuss)")
-  Hint: Call gregexpr with pattern = 'e' and text = DrSeuss
+  Hint: Call gregexpr with pattern = "e" and text = DrSeuss
   
 - Class: cmd_question
   Output: regexec is similar to gregexp in that it also returns a list of the 
@@ -178,10 +178,10 @@
     you would get back a list containing c(1,4) along with the match.length 
     attributes c(7,4) reflecting that "awesome" is matched at position 1, and 
     "some" is matched at position 4. Use regexec to match the occurrence of 
-    'like' and 'e' in each line of the DrSeuss extract.
-  CorrectAnswer: regexec(pattern = 'lik(e)', text = DrSeuss)
+    "like" and "e" in each line of the 'DrSeuss' extract.
+  CorrectAnswer: regexec(pattern = "lik(e)", text = DrSeuss)
   AnswerTests: omnitest(correctExpr = "regexec(pattern = 'lik(e)', text = DrSeuss)")
-  Hint: Call regexec with pattern = 'lik(e)' and text = DrSeuss
+  Hint: Call regexec with pattern = "lik(e)" and text = DrSeuss
 
 - Class: text
   Output: "Now we move onto to the last two 'primary' functions we have 
@@ -192,21 +192,21 @@
     each element of a character vector. As before, you'll need to provide a 
     'pattern' argument in the form of a regular expression and a 'text' vector x. 
     In addition, you'll need to provide a 'replacement' string. Use 
-    sub(pattern, replacement, x) to replace the first instance of 'like' in each 
-    line of the DrSeuss extract with 'not like'.
-  CorrectAnswer: sub(pattern = 'like', replacement = 'not like', x = DrSeuss)
+    sub(pattern, replacement, x) to replace the first instance of "like" in each 
+    line of the 'DrSeuss' extract with "not like".
+  CorrectAnswer: sub(pattern = "like", replacement = "not like", x = DrSeuss)
   AnswerTests: omnitest(correctExpr = "sub(pattern = 'like', replacement = 'not like', x = DrSeuss)")
-  Hint: pattern = 'like', replacement = 'not like' and x = DrSeuss
+  Hint: pattern = "like", replacement = "not like" and x = DrSeuss
 
 - Class: cmd_question
   Output: gsub is just like sub except it will replace all matches (not just the 
     first) in each element of a character vector. Use gsub to replace all 
-    instances of the letter 'e' in each line of the DrSeuss extract with '3'. 
-    Note that all elements within a string must be characters. Hence, '3' needs 
+    instances of the letter "e" in each line of the 'DrSeuss' extract with "3". 
+    Note that all elements within a string must be characters. Hence, "3" needs 
     to be supplied as a string, not as a number.
-  CorrectAnswer: gsub(pattern = 'e', replacement = '3', x = DrSeuss)
+  CorrectAnswer: gsub(pattern = "e", replacement = "3", x = DrSeuss)
   AnswerTests: omnitest(correctExpr = "gsub(pattern = 'e', replacement = '3', x = DrSeuss)")
-  Hint: pattern = 'e', replacement = '3' and x = DrSeuss
+  Hint: pattern = "e", replacement = "3" and x = DrSeuss
 
 - Class: text
   Output: Note that over and above the seven 'primary' functions for regular 
