@@ -27,14 +27,13 @@
     # include "\d" answer variant?
   Hint: Simply use grepl with pattern = "[:digit:]"
 
-# Escaped character classes not working in swirl?
-#- Class: cmd_question
-#  Output: You can indicate a non-digit character with "\D". Use grepl to check 
-#    which of these passwords start with a non-digit character.
-#  CorrectAnswer: grepl(pattern = "^\\D", x = passwords)
-#  AnswerTests: omnitest(correctExpr="grepl(pattern = '^\\D', x = passwords)")
-#  Hint: Simply use grepl with a pattern which combines the 'starts with' anchor 
-#    ("^") with "\\D"
+- Class: cmd_question
+  Output: You can indicate a non-digit character with "\D". Use grepl to check 
+    which of these passwords start with a non-digit character.
+  CorrectAnswer: grepl(pattern = "^\\D", x = passwords)
+  AnswerTests: omnitest(correctExpr="grepl(pattern = '^\x5c\x5cD', x = passwords)")
+  Hint: Simply use grepl with a pattern which combines the 'starts with' anchor 
+    ("^") with "\\D"
   
 - Class: cmd_question
   Output: You can match any lower-case letter character with "[:lower:]". Use 
@@ -84,7 +83,7 @@
   AnswerChoices: pattern = "[[:alpha:][:digit:]]"; pattern = "[:alpha:][:digit:]";
     pattern = "[:alpha:][0-9]"; pattern = "[[a-z][0-9]]"
   CorrectAnswer: pattern = "[[:alpha:][:digit:]]"
-  AnswerTests: omnitest(correctVal= "pattern = '[[:alpha:][:digit:]]'")
+  AnswerTests: omnitest(correctVal= 'pattern = "[[:alpha:][:digit:]]"')
   Hint: Remember we need both upper and lower case characters as well as digits, 
     and these need to be combined into a single character pattern.
     
@@ -99,7 +98,7 @@
   AnswerChoices: pattern = "[A-F0-9a-f]"; pattern = "[[0-9][a-f]]"; 
     pattern = "[[:alpha:][0-9]]"; pattern = "[[0-9][A-F]]"
   CorrectAnswer: pattern = "[A-F0-9a-f]"
-  AnswerTests: omnitest(correctVal= "pattern = '[A-F0-9a-f]'")
+  AnswerTests: omnitest(correctVal= 'pattern = "[A-F0-9a-f]"')
   Hint: Remember that in addition to digits 0 through 9, hexadecimal digits 
     include both the upper and lower-case letters a through f.
   
