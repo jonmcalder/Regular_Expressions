@@ -19,12 +19,12 @@
     to explore the navigation options within swirl and swirl lessons.
 
 - Class: text
-  Output: In order for you to have the best learning experience, we'd suggest 
-    that you maximise the size of your R console window so that you can read all 
+  Output: In order for you to have the best learning experience, we suggest 
+    that you maximise your R console window - this will allow you to read all 
     the lesson and console output with a minimum amount of scrolling back and 
-    forth. To this end, if you are using the RStudio IDE (which is highly 
-    recommended), we'd like to suggest that you keep the script editing pane 
-    small or minimized whenever it is not needed.
+    forth. If you are using the RStudio IDE (which is highly recommended), it's 
+    probably best to keep the script editing pane small or minimized whenever it
+    is not needed.
 
 - Class: text
   Output: In this first lesson we will provide a quick introduction to regular 
