@@ -5,3 +5,37 @@
   Type: Standard
   Organization: N/A
   Version: 2.4.2
+
+- Class: text
+  Output: This lesson will focus the use of quantifiers in regular 
+    expressions. Quantifiers are used to indicate characters or collections of 
+    characters which may be repeated in the search pattern.
+    
+- Class: text
+  Output: The core perspective for quantifiers is very simple, but there is also
+    a more advanced perspective which is important to grasp in order to gain a 
+    proper understanding of how quantifiers work. We will focus on the basics 
+    for now, and then progress on to the more advanced underpinnings in the 
+    latter part of the lesson.
+    
+- Class: text
+  Output: A regex quantifier tells the regex engine to match a certain quantity 
+    of the character or subexpression immediately to its left. The "+" 
+    quantifier indicates a match of one or more times. For example, the pattern 
+    "a+" will match the text strings "apples" and "aaa" since both strings 
+    contain at least one "a". 
+    
+- Class: text
+  Output: Note that in the case of a pattern such as "abc+abx", the quantifier 
+    only applies to the character immediately to it's left (i.e. the "c"), so 
+    that this pattern would match "abcccccabx" but not "abcabcabx". By contrast, 
+    the pattern "(abc)+abx" however, would match "abcabcabx" but not 
+    "abcccccabx".
+
+# * 0 or more
+# + 1 or more
+# ? 0 or 1
+# {3} Exactly 3
+# {3,5} 3, 4 or 5
+# {3,} 3 or more
+# Add a ? to a quantifier to make it ungreedy.
