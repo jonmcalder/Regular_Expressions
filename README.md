@@ -34,7 +34,7 @@ install_course_github("jonmcalder", "Regular_Expressions")
 swirl()
 ```
 
-#### Overview
+## Overview
  
 Regular Expressions are a fundamental tool in the hands of any programmer 
 when it comes to working with strings. This course will provide an overview of 
