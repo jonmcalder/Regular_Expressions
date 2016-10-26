@@ -7,7 +7,7 @@
   Version: 2.4.2
 
 - Class: text
-  Output: This lesson will focus the use of quantifiers in regular 
+  Output: This lesson will focus on the use of quantifiers in regular 
     expressions. Quantifiers are used to indicate characters or collections of 
     characters which may be repeated in the search pattern.
     
@@ -26,11 +26,30 @@
     contain at least one "a". 
     
 - Class: text
-  Output: Note that in the case of a pattern such as "abc+abx", the quantifier 
+  Output: In the case of a pattern such as "abc+abx", the quantifier 
     only applies to the character immediately to it's left (i.e. the "c"), so 
     that this pattern would match "abcccccabx" but not "abcabcabx". By contrast, 
-    the pattern "(abc)+abx" however, would match "abcabcabx" but not 
+    in the case of a pattern like "(abc)+abx", the quantifier applies to the 
+    sub-expression "(abc)" and thus this pattern would match "abcabcabx" but not 
     "abcccccabx".
+
+- Class: mult_question
+  Output: Which of the below strings would be matched by the pattern "xyz(abc)+xyz"?
+  AnswerChoices: xyzxyz;xyzcxyz;xyzabcabcxyz;xyzabc
+  CorrectAnswer: xyzabcabcxyz
+  AnswerTests: omnitest(correctVal='xyzabcabcxyz')
+  Hint: The quantifier is applied to the expression within parentheses.
+  
+- Class: mult_question
+  Output: The "?" quantifier indicates a match of either 0 or 1 occurrences. For
+    example, the pattern "Could be 10? or 20?" would match the strings 
+    "Could be 1 or 2" and "Could be 10 or 20". Which other string(s) would 
+    also be matched by this pattern?
+  AnswerChoices: Could be 10 or 2 and Could be 1 or 20; Could be 100 or 200; Could be  or 
+  CorrectAnswer: Could be 10 or 2 and Could be 1 or 20
+  AnswerTests: omnitest(correctVal="Could be 10 or 2 and Could be 1 or 20")
+  Hint: The "?" quantifier can match either 0 or 1 occurrences of "0" in both 
+    positions within the string.
 
 # * 0 or more
 # + 1 or more
