@@ -37,7 +37,7 @@
   Output: Which of the below strings would be matched by the pattern "xyz(abc)+xyz"?
   AnswerChoices: xyzxyz;xyzcxyz;xyzabcabcxyz;xyzabc
   CorrectAnswer: xyzabcabcxyz
-  AnswerTests: omnitest(correctVal='xyzabcabcxyz')
+  AnswerTests: omnitest(correctVal="xyzabcabcxyz")
   Hint: The quantifier is applied to the expression within parentheses.
   
 - Class: mult_question
@@ -50,11 +50,45 @@
   AnswerTests: omnitest(correctVal="Could be 10 or 2 and Could be 1 or 20")
   Hint: The "?" quantifier can match either 0 or 1 occurrences of "0" in both 
     positions within the string.
+    
+- Class: cmd_question
+  Output: The "*" quantifier is essentially like the union of "+" and "?" since 
+    it is used to match 0 or more occurrences of a character or 
+    sub-expression. Using, the "*" quantifier, provide a pattern which will 
+    match the strings "xz", "xyz", "xyyz", "xyyyz", and "xyyyyz".
+  CorrectAnswer: pattern = "xy*z"
+  AnswerTests: omnitest(correctVal="xy*z")
+  Hint: Simply provide the pattern string (e.g. "abc+").
+  
+- Class: text
+  Output: In addition to the above three quantifiers, one can also be a little 
+    more specific if necessary. A quantifier of the form "(sub){x,y}" indicates 
+    between x and y occurrences of the sub-expression (sub). For example, 
+    "a{2,4}" will match any string containing "aa", "aaa" or "aaaa".
 
-# * 0 or more
-# + 1 or more
-# ? 0 or 1
-# {3} Exactly 3
-# {3,5} 3, 4 or 5
-# {3,} 3 or more
+- Class: text
+  Output: A quantifier of the form "(sub){x,}" will match x or more occurrences 
+    of the sub-expression (sub) e.g. "a{2,}" will match strings containing "aa", 
+    "aaa", "aaaa", "aaaaa" etc.
+
+- Class: text
+  Output: A quantifier of the form "(sub){x}" will match exactly x occurrences 
+    of the sub-expression (sub). e.g. "a{3,}" will match strings "aaa".
+
+- Class: mult_question
+  Output: What will the output of the following statement be? 
+    grepl("ab{3,5}c", c("abc", "abbc","abbbc","abbbbc","abbbbbc","abbbbbbc"))
+  AnswerChoices: FALSE FALSE TRUE TRUE TRUE FALSE;
+    FALSE TRUE TRUE TRUE TRUE FALSE;
+    FALSE FALSE TRUE TRUE TRUE TRUE;
+    FALSE FALSE FALSE TRUE FALSE FALSE
+  CorrectAnswer: FALSE FALSE TRUE TRUE TRUE FALSE
+  AnswerTests: omnitest(correctVal="FALSE FALSE TRUE TRUE TRUE FALSE")
+  Hint: The letter "b" should appear between 3 and 5 times.
+
+- Class: text
+  Output: When combined with anchors, character classes etc, the above 
+    quantifiers provide a lot of power and flexibility. Let's explore a few more
+    examples of this now.
+
 # Add a ? to a quantifier to make it ungreedy.
