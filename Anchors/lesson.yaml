@@ -1,5 +1,5 @@
 - Class: meta
-  Course: Regular_Expressions
+  Course: Regular Expressions
   Lesson: Anchors
   Author: Jon
   Type: Standard
@@ -55,3 +55,15 @@
   Output: In the next lesson, we'll explore the use of character classes in 
     regular expressions. These provide flexible ways to match different types or 
     categories of characters.
+    
+- Class: mult_question
+  Output: Are you happy to submit the log of this lesson to the course author 
+    via Google Forms? The log indicates which questions were attempted multiple 
+    times, skipped or correctly answered. This information will be used to 
+    identify problematic questions and make improvements. The data will be 
+    automatically populated in encoded form - all you need to do is click 
+    'Submit'.
+  AnswerChoices: Yes (will take you to the Google Form); No, not willing to help.
+  CorrectAnswer: Yes (will take you to the Google Form)
+  AnswerTests: submit_log()
+  Hint: Any response will be accepted.

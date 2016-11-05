@@ -3,6 +3,7 @@
       # the user's working directory and thus be accessible to them
       # throughout the lesson.
 
+swirl_options(swirl_logging = TRUE)
 
 create_password <- function(length){
   paste(sample(c(0:9, letters, LETTERS), length, replace=TRUE), collapse="")

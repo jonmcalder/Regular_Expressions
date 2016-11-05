@@ -1,6 +1,6 @@
 - Class: meta
-  Course: Regular_Expressions
-  Lesson: Character_Classes
+  Course: Regular Expressions
+  Lesson: Character Classes
   Author: Jon Calder
   Type: Standard
   Organization: N/A
@@ -107,3 +107,15 @@
     regular expressions. By investigating these we will start to explore how 
     different pattern concepts can be mixed together to build more complex 
     expressions.
+    
+- Class: mult_question
+  Output: Are you happy to submit the log of this lesson to the course author 
+    via Google Forms? The log indicates which questions were attempted multiple 
+    times, skipped or correctly answered. This information will be used to 
+    identify problematic questions and make improvements. The data will be 
+    automatically populated in encoded form - all you need to do is click 
+    'Submit'.
+  AnswerChoices: Yes (will take you to the Google Form); No, not willing to help.
+  CorrectAnswer: Yes (will take you to the Google Form)
+  AnswerTests: submit_log()
+  Hint: Any response will be accepted.
