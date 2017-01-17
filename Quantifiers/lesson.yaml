@@ -23,7 +23,7 @@
     of the character or subexpression immediately to its left. The "+" 
     quantifier indicates a match of one or more times. For example, the pattern 
     "a+" will match the text strings "apples" and "aaa" since both strings 
-    contain at least one "a". 
+    contain at least one "a".
     
 - Class: text
   Output: In the case of a pattern such as "abc+abx", the quantifier 
@@ -73,7 +73,7 @@
 
 - Class: text
   Output: A quantifier of the form "(sub){x}" will match exactly x occurrences 
-    of the sub-expression (sub). e.g. "a{3,}" will match strings "aaa".
+    of the sub-expression (sub). e.g. "a{3}" will match strings containing "aaa".
 
 - Class: mult_question
   Output: What will the output of the following statement be? 
@@ -88,8 +88,48 @@
 
 - Class: text
   Output: When combined with anchors, character classes etc, the above 
-    quantifiers provide a lot of power and flexibility. Let's explore a few more
-    examples of this now.
+    quantifiers provide a lot of power and flexibility. Let's explore a few 
+    examples of this by looking at some common regular expressions.
+    
+- Class: mult_question
+  Output: What is represented by the following regular expression - "^\d+$"
+  AnswerChoices: Positive Integer;Negative Number;Positive/Negative Integer
+  CorrectAnswer: Positive Integer
+  AnswerTests: omnitest(correctVal="Positive Integer")
+  Hint: start of string (anchor) - "^", 
+    one or more digit characters (character class & quantifier) - "\d+", 
+    end of string (anchor) - "$"
+
+- Class: mult_question
+  Output: What is represented by the following regular expression - "^-?\d+$"
+  AnswerChoices: Positive Number;Negative Number;Positive/Negative Integer
+  CorrectAnswer: Positive/Negative Integer
+  AnswerTests: omnitest(correctVal="Positive/Negative Integer")
+  Hint: start of string (anchor) - "^", 
+    optional negative sign (character & quantifier) - "-?", 
+    one or more digit characters (character class & quantifier) - "\d+", 
+    end of string (anchor) - "$"
+
+- Class: mult_question
+  Output: What is represented by the following regular expression - "^-\d*\.?\d+$"
+  AnswerChoices: Positive Number;Negative Number;Positive/Negative Number
+  CorrectAnswer: Negative Number
+  AnswerTests: omnitest(correctVal="Negative Number")
+  Hint: start of string (anchor) - "^", negative sign - "-", 
+    zero or more digit characters (character class & quantifier) - "\d*", 
+    optional period (escaped special character & quantifier) - "\.?",
+    one or more digit characters  (character class & quantifier) - "\d+",
+    end of string (anchor) - "$"
+
+- Class: mult_question
+  Output: Which of the following is the correct regular expression for a 
+    username which must be between 3 and 16 characters in length, containing 
+    only lower case letters, numbers, dashes and underscores?
+  AnswerChoices: ^[a-z0-9_-]{3,16}$;^[a-z0-9]{3,16}$;[a-z0-9_-]{3,16}$;^[a-z0-9_-]{3,16}
+  CorrectAnswer: username_regex
+  AnswerTests: omnitest(correctVal=username_regex)
+  Hint: Note that the username cannot be more than 16 characters and may include
+    dashes and underscores.
 
 # Add a ? to a quantifier to make it ungreedy.
 

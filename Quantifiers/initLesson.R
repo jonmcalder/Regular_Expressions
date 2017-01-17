@@ -4,3 +4,5 @@
       # throughout the lesson.
 
 swirl_options(swirl_logging = TRUE)
+
+username_regex <- "^[a-z0-9_-]{3,16}$"
