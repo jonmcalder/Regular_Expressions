@@ -130,8 +130,103 @@
   AnswerTests: omnitest(correctVal=username_regex)
   Hint: Note that the username cannot be more than 16 characters and may include
     dashes and underscores.
+    
+- Class: text
+  Output: Having covered the basics of quantifiers, we now move onto a slightly 
+    more advanced understanding of how they work. For very simple regular 
+    expressions one can get by without this understanding but it becomes 
+    essential as you progress in your usage of more complex pattern matches.
 
-# Add a ? to a quantifier to make it ungreedy.
+- Class: text
+  Output: There are actually three different 'classes' of quantifiers based on 
+    the underlying pattern evaluation paradigm - greedy quantifiers, lazy 
+    (also known as reluctant or non-greedy) quantifiers, and possessive 
+    quantifiers.
+    
+- Class: text
+  Output: A greedy quantifier is used by default - so all the previous examples 
+    were "greedy" quantifiers. These quantifiers are considered "greedy" because 
+    they force the pattern matcher to read in, or eat, the entire input string 
+    before attempting the first match. If the first match attempt (the entire 
+    input string) fails, the matcher truncates the input string by one character 
+    and tries again, repeating the process until a match is found or there are 
+    no more characters left to back off from. Depending on the quantifier used 
+    in the expression, the last thing it will try matching against is 1 or 0 
+    characters. Loosely speaking, a greedy quantifier tries to get the longest 
+    match that is possible for the specified input string.
+
+- Class: text
+  Output: By contrast a lazy quantifier, takes the opposite approach. 
+    Starting at the beginning of the input string, it reluctantly "eats"" one 
+    character at a time looking for a match. As soon as a successful match is 
+    found, it is returned. If no match is found then the last attempt will 
+    eventually be on the entire input string. Loosely speaking, a lazy 
+    quantifier tries to get the shortest match that is possible for the 
+    specified input string. A quantifier is specified as lazy by appending a "?" 
+    to it. e.g. ".*?" is the 'lazy' version of ".*".
+    
+- Class: text
+  Output: A possessive quantifier always "eats"" the entire input string, and 
+    only tries once for a match. Unlike a greedy quantifier, a possessive 
+    quantifier never backs off in order to look for a shorter match, even if no 
+    match is returned for the full input string. A quantifier is specified as 
+    possessive by appending a "+" to it e.g. ".*+" is the 'possessive' version 
+    of ".*".
+
+- Class: text
+  Output: Let's work through an example to illustrate the difference between 
+    these three types of quantifier, making use of the input string 
+    "xfooxxxxxxfoo".
+    
+- Class: mult_question
+  Output: First the greedy quantifier. What match(es) will be returned when the 
+    pattern ".*foo" is applied to the string "xfooxxxxxxfoo"?
+  AnswerChoices: xfooxxxxxxfoo at index 0-13;xfoo at index 0-4 and xxxxxxfoo at index 4-13;No match found
+  CorrectAnswer: xfooxxxxxxfoo at index 0-13
+  AnswerTests: omnitest(correctVal="xfooxxxxxxfoo at index 0-13")
+  Hint: In this case the greedy quantifier results in one long match.
+
+- Class: text
+  Output: The first example uses the greedy quantifier .* to find "anything", 
+    zero or more times, followed by the letters "f" "o" "o". Because the 
+    quantifier is greedy, the .* portion of the expression first eats the entire 
+    input string. At this point, the overall expression cannot succeed, because 
+    the last three letters ("f" "o" "o") have already been consumed. So the 
+    matcher slowly backs off one letter at a time until the rightmost occurrence 
+    of "foo" has been regurgitated, at which point the match succeeds and the 
+    search ends.
+
+- Class: mult_question
+  Output: Next the lazy quantifier. What match(es) will be returned when the 
+    pattern ".*?foo" is applied to the string "xfooxxxxxxfoo"?
+  AnswerChoices: xfooxxxxxxfoo at index 0-13;xfoo at index 0-4 and xxxxxxfoo at index 4-13;No match found
+  CorrectAnswer: xfoo at index 0-4 and xxxxxxfoo at index 4-13
+  AnswerTests: omnitest(correctVal="xfoo at index 0-4 and xxxxxxfoo at index 4-13")
+  Hint: In this case the lazy quantifier results in two shorter matches.
+  
+- Class: text
+  Output: Since the quantifier is lazy, it starts by first consuming "nothing". 
+    Because "foo" doesn't appear at the beginning of the string, it's forced to 
+    swallow the first letter (an "x"), which triggers the first match between 
+    index 0 and 4. Following the same process starting from different positions 
+    within the input string yields another match from index 4 to 13 (note that 
+    in general only the first match will be returned - but in some cases a regex 
+    pattern can be applied to find multiple matches if present).
+  
+- Class: mult_question
+  Output: And lastly the possessive quantifier. What match(es) will be returned 
+    when the pattern ".*+foo" is applied to the string "xfooxxxxxxfoo"?
+  AnswerChoices: xfooxxxxxxfoo at index 0-13;xfoo at index 0-4 and xxxxxxfoo at index 4-13;No match found
+  CorrectAnswer: No match found
+  AnswerTests: omnitest(correctVal="No match found")
+  Hint: In this case the possessive quantifier results in no match.
+
+- Class: text
+  Output: In this last example no match is found because the quantifier is 
+    possessive. The entire input string is consumed by ".*+", which leaves 
+    nothing left over to satisfy the "foo" at the end of the expression. 
+    Note that in practice a possessive quantifier is much faster than a greedy 
+    quantifier since it doesn't 'backtrack' to check for matches.
 
 - Class: mult_question
   Output: Are you happy to submit the log of this lesson to the course author 
