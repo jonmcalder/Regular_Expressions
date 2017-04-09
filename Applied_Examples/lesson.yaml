@@ -1,0 +1,37 @@
+- Class: meta
+  Course: Regular Expressions
+  Lesson: Applied Examples
+  Author: Jon Calder
+  Type: Standard
+  Organization: N/A
+  Version: 2.4.2
+
+- Class: text
+  Output: This lesson provides a few practical real world use cases which should 
+    illustrate how the concepts introduced in the previous lessons can be 
+    combined to create powerful patterns for regular expressions.
+    
+- Class: text
+  Output: In each of the following questions you should provide your answer in 
+    the form, pattern = "<regular expression>".
+    
+- Class: cmd_question
+  Output: Come up with a regular expression which checks whether a username is 
+    valid. In order to be valid, a username must be between 6 and 16 characters 
+    in length and contain only upper or lower case (English) letters, 
+    underscores, or hyphens.
+  CorrectAnswer: pattern = "^[A-z0-9_-]{6,16}$"
+  AnswerTests: omnitest(correctVal="^[A-z0-9_-]{6,16}$")
+  Hint: "^[]{,}$"
+
+- Class: mult_question
+  Output: Are you happy to submit the log of this lesson to the course author 
+    via Google Forms? The log indicates which questions were attempted multiple 
+    times, skipped or correctly answered. This information will be used to 
+    identify problematic questions and make improvements. The data will be 
+    automatically populated in encoded form - all you need to do is click 
+    'Submit'.
+  AnswerChoices: Yes (will take you to the Google Form); No, not willing to help.
+  CorrectAnswer: Yes (will take you to the Google Form)
+  AnswerTests: submit_log()
+  Hint: Any response will be accepted.
