@@ -52,3 +52,11 @@ submit_log <- function(){
     browseURL(paste0(pre_fill_link, encoded_log))
   }
 }
+
+regex_test <- function(patternExpr, testVector, usePerl = FALSE) {
+  
+  e <- get("e", parent.frame())
+  
+  all(grepl(e$val, testVector, perl = usePerl) == grepl(patternExpr, testVector, perl = usePerl))
+    
+}

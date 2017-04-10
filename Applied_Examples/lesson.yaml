@@ -21,8 +21,29 @@
     in length and contain only upper or lower case (English) letters, 
     underscores, or hyphens.
   CorrectAnswer: pattern = "^[A-z0-9_-]{6,16}$"
-  AnswerTests: omnitest(correctVal="^[A-z0-9_-]{6,16}$")
+  AnswerTests: regex_test(patternExpr = "^[A-z0-9_-]{6,16}$", testVector = username_examples)
   Hint: "^[]{,}$"
+  
+- Class: cmd_question
+  Output: Come up with a regular expression which checks whether a given 
+    password is valid. In order to be valid, a password should be between 6 and 
+    18 characters in length, and should contain at least 1 hash "#", dash "-" or 
+    underscore "_", 1 lowercase letter, 1 uppercase letter and 1 number. Note 
+    that you'll need to use lookaheads to match this neatly in a single 
+    regular expression, so you can assume that 'perl = TRUE'.
+  CorrectAnswer: pattern = "^(?=.*[\\#\\-_])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])([A-z0-9\\#\\-_]{6,18})$"
+  AnswerTests: regex_test(patternExpr = "^(?=.*[\\#\\-_])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])([A-z0-9\\#\\-_]{6,18})$", testVector = password_examples, usePerl = TRUE)
+  Hint: "^(?=.*[])(?=.*[])(?=.*[])(?=.*[])([]{6,18})$"
+  
+- Class: cmd_question
+  Output: Come up with a regular expression which checks whether the entered 
+    value is a (valid) hex value. In order to be valid, a hex value must be 
+    either 3 or 6 characters in length, and can contain only numbers or the 
+    lowercase letters a-f. The value may optionally be prefixed by a '#' in 
+    which case it should be 4 or 7 characters in length.
+  CorrectAnswer: pattern = "^#?([a-f0-9]{6}|[a-f0-9]{3})$"
+  AnswerTests: regex_test(patternExpr = "^#?([a-f0-9]{6}|[a-f0-9]{3})$", testVector = hex_examples)
+  Hint: "^[]?([]{}|[]{})$"
 
 - Class: mult_question
   Output: Are you happy to submit the log of this lesson to the course author 
