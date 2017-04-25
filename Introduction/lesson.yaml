@@ -81,8 +81,8 @@
     together in different ways and are a key building block for regular 
     expressions. For now, let us look at the following question. What pattern 
     would match "I" exclusively at the beginning of the text string?
-  AnswerChoices: pattern = "I";pattern = "I^"; pattern = "^I" 
-  CorrectAnswer: pattern = "^I"
+  AnswerChoices: pattern = 'I';pattern = 'I^'; pattern = '^I' 
+  CorrectAnswer: pattern = '^I'
   AnswerTests: omnitest(correctVal= "pattern = '^I'")
   Hint: The "^" must appear at the start of the pattern.
 
@@ -92,8 +92,8 @@
     example pattern = "Sam$" would match the text string "I am Sam", but not the 
     text string "I do not like them, Sam-I-am." What pattern would match "I am" 
     exclusively at the end of the text string?
-  AnswerChoices: pattern = "I am";pattern = "$I am"; pattern = "I am$" 
-  CorrectAnswer: pattern = "I am$"
+  AnswerChoices: pattern = 'I am';pattern = '$I am'; pattern = 'I am$' 
+  CorrectAnswer: pattern = 'I am$'
   AnswerTests: omnitest(correctVal= "pattern = 'I am$'")
   Hint: The "$" must appear at the end of the pattern.
 
