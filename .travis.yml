@@ -1,0 +1,11 @@
+---
+language: R
+cache: packages
+r:
+  - oldrel
+  - release
+install:
+- R -e "install.packages('swirl')"
+- R -e "install.packages('swirlify')"
+script:
+- R -e "source('run_tests.R')"
