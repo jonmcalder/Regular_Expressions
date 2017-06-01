@@ -33,3 +33,15 @@ hex_examples <- c('#a3c113',
                   'aaa',
                   '#ccc',
                   '#___')
+
+email_examples <- c("john@doe.com",
+                    "john@example.com",
+                    " john@doe.com",
+                    "john@doe.com ",
+                    "john@doe.co.za",
+                    "j.o.h.n@d_o_e.co.uk",
+                    "j_o_h_n@d.o.e.nz",
+                    "john@doe.something",
+                    "j6_.-@doe.com",
+                    "john*@doe.com",
+                    "johndoe.com")

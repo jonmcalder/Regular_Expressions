@@ -25,17 +25,6 @@
   Hint: "^[]{,}$"
   
 - Class: cmd_question
-  Output: Come up with a regular expression which checks whether a given 
-    password is valid. In order to be valid, a password should be between 6 and 
-    18 characters in length, and should contain at least 1 hash "#", dash "-" or 
-    underscore "_", 1 lowercase letter, 1 uppercase letter and 1 number. Note 
-    that you'll need to use lookaheads to match this neatly in a single 
-    regular expression, so you can assume that 'perl = TRUE'.
-  CorrectAnswer: pattern = "^(?=.*[\\#\\-_])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])([A-z0-9\\#\\-_]{6,18})$"
-  AnswerTests: regex_test(patternExpr = "^(?=.*[\\#\\-_])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])([A-z0-9\\#\\-_]{6,18})$", testVector = password_examples, usePerl = TRUE)
-  Hint: "^(?=.*[])(?=.*[])(?=.*[])(?=.*[])([]{6,18})$"
-  
-- Class: cmd_question
   Output: Come up with a regular expression which checks whether the entered 
     value is a (valid) hex value. In order to be valid, a hex value must be 
     either 3 or 6 characters in length, and can contain only numbers or the 
@@ -44,6 +33,37 @@
   CorrectAnswer: pattern = "^#?([a-f0-9]{6}|[a-f0-9]{3})$"
   AnswerTests: regex_test(patternExpr = "^#?([a-f0-9]{6}|[a-f0-9]{3})$", testVector = hex_examples)
   Hint: "^[]?([]{}|[]{})$"
+
+- Class: text
+  Output: Now for the next challenge, let's see if you can produce a regular 
+    expression which matches an e-mail address. In reality, the validation rules 
+    for e-mail addresses are actually quite complex, so to keep things 
+    manageable, we'll use a slightly simpler set of rules here which should 
+    still be fairly representative (and would cover most valid e-mail addresses 
+    in practice).
+
+- Class: cmd_question
+  Output: For our purposes here, let's assume that a valid e-mail address should 
+    begin with one or more upper or lowercase letters, numbers, underscores, 
+    dots, or hyphens. These should be followed by an "@" sign, and then a domain 
+    name. Let's assume that a domain name must be comprised of one or more 
+    upper or lowercase letters, numbers, or hyphens, which are then followed by 
+    a dot, and then by another two to six characters which should be lower 
+    case letters or dots.
+  CorrectAnswer: pattern = "^([A-z0-9_\\.-]+)@([A-z0-9-]+)\\.([a-z\\.]{2,6})$"
+  AnswerTests: regex_test(patternExpr = "^([A-z0-9_\\.-]+)@([A-z0-9-]+)\\.([a-z\\.]{2,6})$", testVector = email_examples)
+  Hint: "^([]+)@([]+)\\.([]{2,6})$"
+
+- Class: cmd_question
+  Output: Come up with a regular expression which checks whether a given 
+    password is valid. In order to be valid, a password should be between 6 and 
+    18 characters in length, and should contain at least 1 hash "#", dash "-" or 
+    underscore "_", 1 lowercase letter, 1 uppercase letter and 1 number. Note 
+    that you'll need to use lookaheads to match this neatly in a single 
+    regular expression, so you can assume that 'perl = TRUE'.
+  CorrectAnswer: pattern = "^(?=.*[\\#\\-_])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])([A-z0-9\\#\\-_]{6,18})$"
+  AnswerTests: regex_test(patternExpr = "^(?=.*[\\#\\-_])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])([A-z0-9\\#\\-_]{6,18})$", testVector = password_examples, usePerl = TRUE)
+  Hint: "^(?=.*[])(?=.*[])(?=.*[])(?=.*[])([]{6,18})$"  
 
 - Class: mult_question
   Output: Are you happy to submit the log of this lesson to the course author 
