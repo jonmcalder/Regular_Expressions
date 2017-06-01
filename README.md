@@ -1,6 +1,7 @@
 # Regular Expressions
 
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
+[![Build Status](https://travis-ci.org/jonmcalder/Regular_Expressions.svg?branch=master)](https://travis-ci.org/jonmcalder/Regular_Expressions)
 
 This is a course for use with the 
 [swirl R package](https://cran.r-project.org/web/packages/swirl/index.html). 
