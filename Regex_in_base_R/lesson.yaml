@@ -1,0 +1,147 @@
+- Class: meta
+  Course: Regular Expressions
+  Lesson: Regex in base R
+  Author: Jon Calder
+  Type: Standard
+  Organization: N/A
+  Version: 2.4.2
+  
+- Class: text
+  Output: In base R, there are seven 'primary' functions which leverage the 
+    power of regular expressions to achieve slightly different outcomes. They 
+    are grep, grepl, regexpr, gregexpr, regexec, sub and gsub. These all use 
+    overlapping and/or similar input parameters, and differ mainly in terms of 
+    functionality and the type of output they provide.
+    
+- Class: text
+  Output: Note that as with most/all things in R, these functions are 
+    vectorized. grep, grepl, regexpr, gregexpr and regexec search for matches to 
+    the pattern argument within each element of a character vector. sub and gsub 
+    leverage regular expressions to facilitate 'find and replace' functionality 
+    within elements of a character vector. We will now go through an example or 
+    two with each function to help you get familiar with them. Some are a little 
+    easier to get a handle on quickly, but hopefully over time you will start 
+    getting a sense of when you might find each of them useful.
+
+- Class: cmd_question
+  Output: To facilitate these examples, an extract from Green Eggs and Ham by 
+    the legendary Dr Seuss has been loaded into the object 'DrSeuss'. Inspect 
+    this text extract now using str().
+  CorrectAnswer: str(DrSeuss)
+  AnswerTests: omnitest(correctExpr = "str(DrSeuss)")
+  Hint: By entering "str(DrSeuss)", you can inspect the structure of the 
+    provided text extract
+    
+- Class: cmd_question
+  Output: By default, grep returns a vector of indices indicating which elements 
+    of the 'text' vector match the provided 'pattern'. Use grep(pattern, x), 
+    where x specifies the text (character) vector, to check which lines in the 
+    'DrSeuss' extract contain the phrase "not like".
+  CorrectAnswer: grep("not like", DrSeuss)
+  AnswerTests: omnitest(correctExpr = "grep(pattern = 'not like', x = DrSeuss)")
+  Hint: Call grep with pattern = "not like" and x = DrSeuss
+
+- Class: cmd_question
+  Output: Using grep with value = TRUE, returns the matching elements of the 
+    'text' vector. Use grep(pattern, x) to see the lines in the 'DrSeuss' 
+    extract which contain the phrase "not like".
+  CorrectAnswer: grep(pattern = "not like", x = DrSeuss, value = TRUE)
+  AnswerTests: omnitest(correctExpr = "grep(pattern = 'not like', x = DrSeuss, value = TRUE)")
+  Hint: Call grep just as before but this time include value = TRUE
+  
+- Class: cmd_question
+  Output: grepl is very similar to grep, but instead returns logical output 
+    i.e. it returns TRUE or FALSE for each element of the 'text' vector, 
+    indicating whether or not the element matches the provided pattern. Use 
+    grepl(pattern, x) to see which lines in the DrSeuss extract which contain 
+    the phrase "not like".
+  CorrectAnswer: grepl(pattern = "not like", x = DrSeuss)
+  AnswerTests: omnitest(correctExpr = "grepl(pattern = 'not like', x = DrSeuss)")
+  Hint: Call grepl with pattern = "not like" and x = DrSeuss
+  
+- Class: cmd_question
+  Output: regexpr will return an integer vector of the same length as the 'text' 
+    vector, with the number indicating the starting position of the first 
+    pattern match within each element (or -1 if there is no match). Use regexpr 
+    to find the first occurence of the letter "e" in each line of the 'DrSeuss' 
+    extract.
+  CorrectAnswer: regexpr(pattern = "e", text = DrSeuss)
+  AnswerTests: omnitest(correctExpr = "regexpr(pattern = 'e', text = DrSeuss)")
+  Hint: Call regexpr with pattern = "e" and text = DrSeuss
+  
+- Class: text
+  Output: gregexpr is similar to regexpr, except instead of returning an integer 
+    vector it will return a list, with each list element indicating the starting 
+    positions of all pattern matches within the respective element of the text 
+    (or -1 if there is no match). 
+    
+- Class: cmd_question
+  Output: Use gregexpr to find all occurences of the letter "e" in each line of 
+    the 'DrSeuss' extract.
+  CorrectAnswer: gregexpr(pattern = "e", text = DrSeuss)
+  AnswerTests: omnitest(correctExpr = "gregexpr(pattern = 'e', text = DrSeuss)")
+  Hint: Call gregexpr with pattern = "e" and text = DrSeuss
+
+- Class: cmd_question
+  Output: regexec is similar to gregexp in that it also returns a list of the 
+    same length as the 'text' parameter, with each element either -1 if there is 
+    no match, or a sequence of integers with the starting positions of the match 
+    and substrings corresponding to parenthesized subexpressions of the 
+    'pattern' parameter. This means that with pattern = "awe(some)" and 
+    text = "awesome", you would get back a list containing c(1,4) along with the 
+    match.length attributes c(7,4) reflecting that "awesome" is matched at 
+    position 1, and "some" is matched at position 4. Use regexec to match the 
+    occurrence of "like" and "e" in each line of the 'DrSeuss' extract.
+  CorrectAnswer: regexec(pattern = "lik(e)", text = DrSeuss)
+  AnswerTests: omnitest(correctExpr = "regexec(pattern = 'lik(e)', text = DrSeuss)")
+  Hint: Call regexec with pattern = "lik(e)" and text = DrSeuss
+
+- Class: text
+  Output: "Now we move onto to the last two 'primary' functions we have 
+    identified as relating directly to regular expressions: sub and gsub."
+  
+- Class: cmd_question
+  Output: sub can be used to replace the first match of a regular expression in 
+    each element of a character vector. As before, you'll need to provide a 
+    'pattern' argument in the form of a regular expression and a 'text' vector 
+    x. In addition, you'll need to provide a 'replacement' string. Use 
+    sub(pattern, replacement, x) to replace the first instance of "like" in each 
+    line of the 'DrSeuss' extract with "not like".
+  CorrectAnswer: sub(pattern = "like", replacement = "not like", x = DrSeuss)
+  AnswerTests: omnitest(correctExpr = "sub(pattern = 'like', replacement = 'not like', x = DrSeuss)")
+  Hint: pattern = "like", replacement = "not like" and x = DrSeuss
+
+- Class: cmd_question
+  Output: gsub is just like sub except it will replace all matches (not just the 
+    first) in each element of a character vector. Use gsub to replace all 
+    instances of the letter "e" in each line of the 'DrSeuss' extract with "3". 
+    Note that all elements within a string must be characters. Hence, "3" needs 
+    to be supplied as a string, not as a number.
+  CorrectAnswer: gsub(pattern = "e", replacement = "3", x = DrSeuss)
+  AnswerTests: omnitest(correctExpr = "gsub(pattern = 'e', replacement = '3', x = DrSeuss)")
+  Hint: pattern = "e", replacement = "3" and x = DrSeuss
+
+- Class: text
+  Output: Note that over and above the seven 'primary' functions for regular 
+    expressions that we have looked at here, there are of course many other R 
+    functions which can take regular expressions as an input parameter 
+    e.g. strsplit, list.files, ls, apropos, browseEnv, help.search etc (see the 
+    relevant help pages for more information on these functions). None of these 
+    will be explored in this course, but should all be easy to make use of once 
+    you have a good handle on how to write regular expressions.
+    
+- Class: text
+  Output: In the next lesson, we'll start exploring regular expressions 
+    themselves in more depth by looking at anchors.
+    
+- Class: mult_question
+  Output: Are you happy to submit the log of this lesson to the course author 
+    via Google Forms? The log indicates which questions were attempted multiple 
+    times, skipped or correctly answered. This information will be used to 
+    identify problematic questions and make improvements. The data will be 
+    automatically populated in encoded form - all you need to do is click 
+    'Submit'.
+  AnswerChoices: Yes (will take you to the Google Form); No, not willing to help.
+  CorrectAnswer: Yes (will take you to the Google Form)
+  AnswerTests: submit_log()
+  Hint: Any response will be accepted.

@@ -12,4 +12,4 @@ swirl_options(swirl_logging = TRUE)
 }
 
 DrSeuss <- readLines(file.path(.get_course_path(), "Regular_Expressions", 
-                               "Anchors", "green_eggs_and_ham.txt"))
+                               "Regex_in_base_R", "green_eggs_and_ham.txt"))
