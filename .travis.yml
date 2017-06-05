@@ -1,5 +1,7 @@
 ---
 language: R
+latex: false
+pandoc: false
 cache: packages
 r:
   - oldrel
