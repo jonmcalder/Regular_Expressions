@@ -1,6 +1,7 @@
 # Regular Expressions
 
 [![Project Status: WIP - Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](http://www.repostatus.org/badges/latest/wip.svg)](http://www.repostatus.org/#wip)
+[![Build Status](https://travis-ci.org/jonmcalder/Regular_Expressions.svg?branch=master)](https://travis-ci.org/jonmcalder/Regular_Expressions)
 
 This is a course for use with the 
 [swirl R package](https://cran.r-project.org/web/packages/swirl/index.html). 
@@ -41,9 +42,9 @@ when it comes to working with strings. This course will provide an overview of
 what is possible with regular expressions as they are applied in R.  
   
 Though different programming languages often possess their own conventions and 
-flavor when it comes to the regular expressions, the vast majority of the 
-knowledge you will obtain from this course is transferable to regular 
-expressions in other programming languages.
+flavor when it comes to regular expressions, the vast majority of the knowledge 
+you will obtain from this course is transferable to regular expressions in 
+other programming languages.
 
 ## Contribute
 
