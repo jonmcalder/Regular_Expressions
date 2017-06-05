@@ -1,0 +1,8 @@
+title: Regular expressions
+description: Swirl course on regular expressions and the regex family of functions in R
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-minimal
+
+gems:
+  - jekyll-mentions
