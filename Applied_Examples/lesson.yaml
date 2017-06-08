@@ -32,7 +32,7 @@
     which case it should be 4 or 7 characters in length.
   CorrectAnswer: pattern = "^#?([a-f0-9]{6}|[a-f0-9]{3})$"
   AnswerTests: regex_test(patternExpr = "^#?([a-f0-9]{6}|[a-f0-9]{3})$", testVector = hex_examples)
-  Hint: "^[]?([]{}|[]{})$"
+  Hint: "^[___]?([___]{_}|[___]{_})$"
 
 - Class: text
   Output: Now for the next challenge, let's see if you can produce a regular 
@@ -52,8 +52,31 @@
     case letters or dots.
   CorrectAnswer: pattern = "^([A-z0-9_\\.-]+)@([A-z0-9-]+)\\.([a-z\\.]{2,6})$"
   AnswerTests: regex_test(patternExpr = "^([A-z0-9_\\.-]+)@([A-z0-9-]+)\\.([a-z\\.]{2,6})$", testVector = email_examples)
-  Hint: "^([]+)@([]+)\\.([]{2,6})$"
+  Hint: "^([___]+)@([___]+)\\.([___]{_,_})$"
+  
+- Class: text
+  Output: Lets move onto something a little more challenging now - web URLs! 
+    Note that the rules have again been simplified slightly but should 
+    nonetheless be fairly representative of reality apart from some edge cases. 
+    You ready? Let's go!
+    
+- Class: text
+  Output: We assume that a valid web URL may begin with "http://", "https://", 
+    or neither. After this follows the domain name, which as in the case of the 
+    previous email example should consist of one or more upper or lower 
+    case letters, numbers, or hypens which are then followed by a dot, and then 
+    by another two to six characters which should be lower case letters or dots. 
+    Following that is an optional directory/file section which we simplify here 
+    to be zero or more forward slashes, upper or lower case letters, numbers, 
+    underscores, spaces, dots, or hyphens.
 
+- Class: cmd_question
+  Output: Match the web URL structure described above with a suitable regex 
+    pattern.
+  CorrectAnswer: pattern = "^(https?:\\/\\/)?([0-9A-z\\.-]+)\\.([a-z\\.]{2,6})[\\/ A-z0-9_\\.-]*$"
+  AnswerTests: regex_test(patternExpr = "^(https?:\\/\\/)?([0-9A-z\\.-]+)\\.([a-z\\.]{2,6})[\\/ A-z0-9_\\.-]*$", testVector = url_examples)
+  Hint: "^(https?:\\/\\/)?([___]+)\\.([___]{_,_})[___]*$"
+  
 - Class: cmd_question
   Output: Come up with a regular expression which checks whether a given 
     password is valid. In order to be valid, a password should be between 6 and 
