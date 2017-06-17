@@ -13,7 +13,16 @@
     
 - Class: text
   Output: In each of the following questions you should provide your answer in 
-    the form, pattern = "<regular expression>".
+    the form, pattern = "<regular expression>", or alternatively, simply as 
+    "<regular expression>".
+    
+- Class: cmd_question
+  Output: Let's begin with a relatively simple example. Can you find a pattern
+    which matches any string representation of a year between (and inclusive 
+    of) "1900" and "2099"?
+  CorrectAnswer: pattern = "^(19|20)[0-9]{2}$"
+  AnswerTests: regex_test(patternExpr = "^(19|20)[0-9]{2}$", testVector = year_examples)
+  Hint: pattern = "^(__|__)[___]{_}$"
     
 - Class: cmd_question
   Output: Come up with a regular expression which checks whether a username is 
@@ -22,7 +31,7 @@
     underscores, or hyphens.
   CorrectAnswer: pattern = "^[A-z0-9_-]{6,16}$"
   AnswerTests: regex_test(patternExpr = "^[A-z0-9_-]{6,16}$", testVector = username_examples)
-  Hint: "^[]{,}$"
+  Hint: pattern = "^[]{,}$"
   
 - Class: cmd_question
   Output: Come up with a regular expression which checks whether the entered 
@@ -32,7 +41,7 @@
     which case it should be 4 or 7 characters in length.
   CorrectAnswer: pattern = "^#?([a-f0-9]{6}|[a-f0-9]{3})$"
   AnswerTests: regex_test(patternExpr = "^#?([a-f0-9]{6}|[a-f0-9]{3})$", testVector = hex_examples)
-  Hint: "^[___]?([___]{_}|[___]{_})$"
+  Hint: pattern = "^[___]?([___]{_}|[___]{_})$"
 
 - Class: text
   Output: Now for the next challenge, let's see if you can produce a regular 
@@ -52,7 +61,7 @@
     case letters or dots.
   CorrectAnswer: pattern = "^([A-z0-9_\\.-]+)@([A-z0-9-]+)\\.([a-z\\.]{2,6})$"
   AnswerTests: regex_test(patternExpr = "^([A-z0-9_\\.-]+)@([A-z0-9-]+)\\.([a-z\\.]{2,6})$", testVector = email_examples)
-  Hint: "^([___]+)@([___]+)\\.([___]{_,_})$"
+  Hint: pattern = "^([___]+)@([___]+)\\.([___]{_,_})$"
   
 - Class: text
   Output: Lets move onto something a little more challenging now - web URLs! 
@@ -75,7 +84,7 @@
     pattern.
   CorrectAnswer: pattern = "^(https?:\\/\\/)?([0-9A-z\\.-]+)\\.([a-z\\.]{2,6})[\\/ A-z0-9_\\.-]*$"
   AnswerTests: regex_test(patternExpr = "^(https?:\\/\\/)?([0-9A-z\\.-]+)\\.([a-z\\.]{2,6})[\\/ A-z0-9_\\.-]*$", testVector = url_examples)
-  Hint: "^(https?:\\/\\/)?([___]+)\\.([___]{_,_})[___]*$"
+  Hint: pattern = "^(https?:\\/\\/)?([___]+)\\.([___]{_,_})[___]*$"
   
 - Class: cmd_question
   Output: Come up with a regular expression which checks whether a given 
@@ -86,7 +95,7 @@
     regular expression, so you can assume that 'perl = TRUE'.
   CorrectAnswer: pattern = "^(?=.*[\\#\\-_])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])([A-z0-9\\#\\-_]{6,18})$"
   AnswerTests: regex_test(patternExpr = "^(?=.*[\\#\\-_])(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])([A-z0-9\\#\\-_]{6,18})$", testVector = password_examples, usePerl = TRUE)
-  Hint: "^(?=.*[])(?=.*[])(?=.*[])(?=.*[])([]{6,18})$"  
+  Hint: pattern = "^(?=.*[])(?=.*[])(?=.*[])(?=.*[])([]{6,18})$"  
 
 - Class: mult_question
   Output: Are you happy to submit the log of this lesson to the course author 

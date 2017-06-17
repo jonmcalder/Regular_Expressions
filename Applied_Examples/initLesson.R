@@ -5,6 +5,16 @@
 
 swirl_options(swirl_logging = TRUE)
 
+year_examples <- c("1899",
+                   "1900",
+                   "1919",
+                   "1999",
+                   "2000",
+                   "2001",
+                   "2099",
+                   "2100",
+                   "2222")
+
 username_examples <- c("my-us3r_n4m3", 
                        "th1s1s-wayt00_l0ngt0beausername",
                        "hasillegalchar",
