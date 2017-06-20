@@ -14,12 +14,35 @@
 - Class: text
   Output: In each of the following questions you should provide your answer in 
     the form, pattern = "<regular expression>", or alternatively, simply as 
-    "<regular expression>".
+    "<regular expression>". Note that all regex patterns should begin with '^' 
+    and end with '$' (i.e. you can assume that you are looking for the relevant 
+    text on a line by line basis and not within a line of text).
     
+- Class: text
+  Output: Remember that at any time you can type 'play()', which will pause 
+    swirl and free you up to experiment in the R console and work things out. 
+    When you are ready to continue just type 'nxt()' and you can continue with 
+    these questions. If you get stuck on a question and want to move on simply 
+    type 'skip()'.
+  
 - Class: cmd_question
-  Output: Let's begin with a relatively simple example. Can you find a pattern
-    which matches any string representation of a year between (and inclusive 
-    of) "1900" and "2099"?
+  Output: Let's begin with a relatively simple example. Provide a regular 
+    expression that will match any natural (non-negative integer) number i.e. 0, 
+    1, 2, 3, 4, etc.
+  CorrectAnswer: pattern = "^[0-9]+$"
+  AnswerTests: regex_test(patternExpr = "^[0-9]+$", testVector = positive_integer_examples)
+  Hint: "^[___]+$"
+  
+- Class: cmd_question
+  Output: Now adapt the pattern to match any positive or negative integer 
+    number, but not zero.
+  CorrectAnswer: pattern = "^-?[1-9][0-9]*$"
+  AnswerTests: regex_test(patternExpr = "^-?[1-9][0-9]*$", testVector = integer_examples)
+  Hint: "^-?[___][___]*$"
+  
+- Class: cmd_question
+  Output: Can you find a pattern which matches any string representation of a 
+    year between (and inclusive of) "1900" and "2099"?
   CorrectAnswer: pattern = "^(19|20)[0-9]{2}$"
   AnswerTests: regex_test(patternExpr = "^(19|20)[0-9]{2}$", testVector = year_examples)
   Hint: pattern = "^(__|__)[___]{_}$"
