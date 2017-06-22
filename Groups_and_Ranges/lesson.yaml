@@ -30,7 +30,7 @@
   Output: Which of the below patterns would match "xxxxyyyyyzzzzz"
   AnswerChoices: pattern = "xyz";pattern = "[a-w]";pattern = "[yz]";pattern = "a-z"
   CorrectAnswer: pattern = "[yz]"
-  AnswerTests: omnitest(correctVal="pattern = '[yz]'")
+  AnswerTests: omnitest(correctVal='pattern = "[yz]"')
   Hint: Expressions not contained square brackets require an exact match.
   
 - Class: text
