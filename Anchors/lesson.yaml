@@ -16,17 +16,17 @@
   
 - Class: cmd_question
   Output: As with the previous lesson, we've loaded a text extract into the 
-    object 'DrSeuss'. Use grep to check for occurence of the letter "I" at the 
+    object 'mice'. Use grep to check for occurence of the letter "T" at the 
     start of each line from this extract.
-  CorrectAnswer: grep(pattern = "^I", x = DrSeuss)
-  AnswerTests: omnitest(correctExpr="grep(pattern = '^I', x = DrSeuss)")
+  CorrectAnswer: grep(pattern = "^T", x = mice)
+  AnswerTests: omnitest(correctExpr="grep(pattern = '^T', x = mice)")
   Hint: Remember to include "^" at the start of the pattern.
   
 - Class: cmd_question
-  Output: Use grep to check for occurence of the word "like" at the end of each 
+  Output: Use grep to check for occurence of the letter "e" at the end of each 
     line from this extract.
-  CorrectAnswer: grep(pattern = "like$", x = DrSeuss)
-  AnswerTests: omnitest(correctExpr="grep(pattern = 'like$', x = DrSeuss)")
+  CorrectAnswer: grep(pattern = "e$", x = mice)
+  AnswerTests: omnitest(correctExpr="grep(pattern = 'e$', x = mice)")
   Hint: Remember to include "$" at the end of the pattern.
   
 - Class: cmd_question
@@ -35,19 +35,19 @@
     escape values for character constants (in addition to regular expressions 
     which also do so), so when supplying "\b" you'll need to escape it with 
     another backslash i.e. "\\b"
-    Use grep to check for the occurence of the word "like" again, but this time 
-    only look for a match where there is a word boundary following the word.
-  CorrectAnswer: grep(pattern = "like\\b", x = DrSeuss)
-  AnswerTests: omnitest(correctVal="[1]  1  3  5  7  9 11 13 15")
+    Use grep to check for the occurence of the letter "t" again, but this time 
+    only look for a match where there is a word boundary following the letter.
+  CorrectAnswer: grep(pattern = "t\\b", x = mice)
+  AnswerTests: omnitest(correctVal="4")
   Hint: Remember you need to use "\\b" due to R's handling of "\" as an escape 
     character.
   
 - Class: cmd_question
   Output: A "\B" is used to match a non-word boundary - it is precisely the 
-    opposite of "\b". Use grep to check for the occurence of the letter "e" at a 
+    opposite of "\b". Use grep to check for the occurence of the letter "t" at a 
     non-word boundary in each line of the provided text extract.
-  CorrectAnswer: grep(pattern = "\\Be\\B", x = DrSeuss)
-  AnswerTests: omnitest(correctVal="[1]  2  3  6  7  8  9 10 11 12 14 15")
+  CorrectAnswer: grep(pattern = "\\Bt\\B", x = mice)
+  AnswerTests: omnitest(correctVal="3 4")
   Hint: Note that you'll need to check for a non-word boundary on both sides. 
     Also remember you need to use a double backslash in R.
   

@@ -41,43 +41,43 @@
     identify the string content against which to match this pattern. The pattern 
     itself is always provided in the form of a string so will need to be 
     enclosed in (single or double) quotation marks. For example, the pattern 
-    "am" will match the occurrence of the letter "a" followed immediately by an 
-    "m", regardless of where in the content string they occur and whether or not 
-    there are other characters before the "a" or after the "m".
+    "mic" will match the occurrence of the letters "m", "i" and "c" in that 
+    exact sequence, regardless of where in the content string they occur and 
+    whether or not there are other characters before the "m" or after the "c".
 
 - Class: mult_question
-  Output: If we were to use pattern = "am" with text = 
-    "Do you like green eggs and ham", would there be a match?
+  Output: If we were to use pattern = "mic" with text = "Three blind mice", 
+    would there be a match?
   AnswerChoices: Yes;No
   CorrectAnswer: Yes
   AnswerTests: omnitest(correctVal= "Yes")
-  Hint: Note that the word ham at the end of the text string contains an "a" 
-    followed immediately by an "m".
+  Hint: Note that the word mice at the end of the text string starts with the 
+    letters "m"-"i"-"c".
 
 - Class: text
-  Output: Note furthermore that regular expressions are case sensitive by default 
-    (although we'll see later that one can choose to have R ignore case in 
-    regular expressions). This means that with pattern = "Am" and the same text 
-    as the above case there would be no match.
+  Output: Note furthermore that regular expressions are case sensitive by 
+    default (although we'll see later that one can choose to have R ignore case 
+    in regular expressions). This means that with pattern = "Mic" and the same 
+    text as the above case there would be no match.
 
 - Class: mult_question
-  Output: If we were to use pattern = "Sam-i-am" with 
-    text = "I do not like them, Sam-I-am. I do not like green eggs and ham.", 
+  Output: If we were to use pattern = "three" with text = "Three blind mice", 
     would there be a match?
   AnswerChoices: Yes;No
   CorrectAnswer: No
   AnswerTests: omnitest(correctVal= "No")
-  Hint: Note the case of the letter "i" in the pattern and in the text.
+  Hint: Note the case of the letter "T" in the pattern and in the text.
   
 - Class: text
   Output: If we want to match only the very beginning of the text string, we can 
     include a "^" at the beginning of the pattern string. So for example 
-    pattern = "^Sam" would match the text strings "Sam-I-am" and "Sam I am", but 
-    not the text string "I do not like them, Sam-I-am." "^" is a so-called 
-    metacharacter, which does not have a literal interpretation in a string 
-    (such as "a"). As you will see in upcoming lessons, metacharacters can be 
-    combined together in different ways and are a key building block for regular 
-    expressions. For now, let us look at the following question.
+    pattern = "^Three" would match the text string 
+    "Three blind mice, three blind mice", but pattern = "^three" wouldn't.
+    "^" is a so-called metacharacter, which does not have a literal 
+    interpretation in a string (such as a single letter like "t"). As you will 
+    see in upcoming lessons, metacharacters can be combined together in 
+    different ways and are a key building block for regular expressions. For 
+    now, let us look at the following question.
     
 - Class: mult_question
   Output: What pattern would match "I" exclusively at the beginning of the text 
@@ -90,12 +90,13 @@
 - Class: mult_question
   Output: Similarly if we want to match only the very end of the text string, we 
     can include the metacharacter "$" at the end of the pattern string. So for 
-    example pattern = "Sam$" would match the text string "I am Sam", but not the 
-    text string "I do not like them, Sam-I-am." What pattern would match "I am" 
-    exclusively at the end of the text string?
-  AnswerChoices: pattern = 'I am';pattern = '$I am'; pattern = 'I am$' 
-  CorrectAnswer: pattern = 'I am$'
-  AnswerTests: omnitest(correctVal= "pattern = 'I am$'")
+    example pattern = "mice$" would match the text string 
+    "Three blind mice, three blind mice", but not the text string 
+    "Did you ever see such a thing in your life, As three blind mice!". What 
+    pattern would match "I" exclusively at the end of the text string?
+  AnswerChoices: pattern = 'I';pattern = '$I'; pattern = 'I$' 
+  CorrectAnswer: pattern = 'I$'
+  AnswerTests: omnitest(correctVal= "pattern = 'I$'")
   Hint: The "$" must appear at the end of the pattern.
   
 - Class: text
