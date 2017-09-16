@@ -50,7 +50,7 @@
 - Class: cmd_question
   Output: Come up with a regular expression which checks whether a username is 
     valid. In order to be valid, a username must be between 6 and 16 characters 
-    in length and contain only upper or lower case (English) letters, 
+    in length and contain only upper or lower case (English) letters, numbers, 
     underscores, or hyphens.
   CorrectAnswer: pattern = "^[A-z0-9_-]{6,16}$"
   AnswerTests: regex_test(patternExpr = "^[A-z0-9_-]{6,16}$", testVector = username_examples)
@@ -105,8 +105,8 @@
 - Class: cmd_question
   Output: Match the web URL structure described above with a suitable regex 
     pattern.
-  CorrectAnswer: pattern = "^(https?:\\/\\/)?([0-9A-z\\.-]+)\\.([a-z\\.]{2,6})[\\/ A-z0-9_\\.-]*$"
-  AnswerTests: regex_test(patternExpr = "^(https?:\\/\\/)?([0-9A-z\\.-]+)\\.([a-z\\.]{2,6})[\\/ A-z0-9_\\.-]*$", testVector = url_examples)
+  CorrectAnswer: pattern = "^(https?:\\/\\/)?([0-9A-z-]+)\\.([a-z\\.]{2,6})[\\/ A-z0-9_\\.-]*$"
+  AnswerTests: regex_test(patternExpr = "^(https?:\\/\\/)?([0-9A-z-]+)\\.([a-z\\.]{2,6})[\\/ A-z0-9_\\.-]*$", testVector = url_examples)
   Hint: pattern = "^(https?:\\/\\/)?([___]+)\\.([___]{_,_})[___]*$"
   
 - Class: cmd_question

@@ -39,8 +39,10 @@ year_examples <- c("1899",
 
 username_examples <- c("my-us3r_n4m3", 
                        "th1s1s-wayt00_l0ngt0beausername",
-                       "hasillegalchar",
+                       "hasillegalchar&",
                        "short",
+                       "12345678910",
+                       "CanBeUpperCase",
                        "perfectlyvalid")
 
 password_examples <- c("#1pAssw0rd",
@@ -59,12 +61,25 @@ password_examples <- c("#1pAssw0rd",
                        "#Ab112")
 
 hex_examples <- c('#a3c113',
-                  '#4d82h4',
                   '#ffffff',
                   'aaaaaa',
                   'aaa',
                   '#ccc',
-                  '#___')
+                  "123456",
+                  "#123456",
+                  "#123",
+                  '#4d82h4',
+                  '#___',
+                  "#aaaa",
+                  "aaaa",
+                  "abcde",
+                  "#abcde",
+                  "#12345",
+                  "#gh1",
+                  "#acegik",
+                  "#AAA",
+                  "abcdeF",
+                  "#abcdeF")
 
 email_examples <- c("john@doe.com",
                     "john@example.com",
