@@ -11,6 +11,11 @@ install:
     
 # Adapt as necessary starting from here
 
+environment:
+      global:
+       WARNINGS_ARE_ERRORS: 0
+       USE_RTOOLS: true
+
 build_script:
   - Rscript -e "install.packages(c('swirl', 'swirlify'), repos = 'http://cran.r-project.org')"
   - Rscript -e "swirl::install_course_github('jonmcalder', 'Regular_Expressions', 'master')"

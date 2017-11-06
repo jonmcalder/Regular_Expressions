@@ -38,7 +38,33 @@
     specify more broad ranges. The pattern "[[:lower:][:upper:]]" will match any 
     alphabetic characters (lower or upper-case), and is thus equivalent to 
     "[:alpha:]". Another equivalent pattern would be "[A-z]".
-  
+
+- Class: text
+  Output: Note also that custom ranges such as "a-d" and "4-7" can be combined 
+    directly within square brackets without nesting e.g. "[a-c1-3]" is 
+    equivalent to "[abc123]".
+
+- Class: mult_question
+  Output: Which of the below patterns would match "12345"?
+  AnswerChoices: pattern = "[:lower:]";pattern = "[A-d6-9]";pattern = "[[:upper:][a-z]]";pattern = "[a-c2-4]"
+  CorrectAnswer: pattern = "[a-c2-4]"
+  AnswerTests: omnitest(correctVal='pattern = "[a-c2-4]"')
+  Hint: Simply look for the pattern which contains an overlapping numeric range.
+
+- Class: text
+  Output: A range can be negated by including a "^" at the beginning. For 
+    example, "[^abc]" will match any character other than "a", "b" or "c". This 
+    is useful to know since complex patterns can often be expressed more simply 
+    (or at least more succinctly), by specifying and then negating their 
+    complement.
+    
+- Class: mult_question
+  Output: Which of the below patterns is the odd one out?
+  AnswerChoices: pattern = "[^0-9]";pattern = "[^[:digit:]]";pattern = "[A-z]";pattern = "[\\D]"
+  CorrectAnswer: pattern = "[A-z]"
+  AnswerTests: omnitest(correctVal='pattern = "[A-z]"')
+  Hint: Don't forget about special characters.
+
 - Class: text
   Output: In the next lesson, we'll explore the use of quantifiers in regular 
     expressions. Quantifiers specify how many repetitions of a pattern should be 
