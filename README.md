@@ -15,25 +15,31 @@ For more information regarding swirl, visit the
 
 ## Installation
 
-First make sure you have swirl installed:
+First make sure you have `swirl` installed:
  
  ```
 install.packages("swirl")
 ```
 
 Or alternatively get the latest development version:
- 
- ```
+
+```
 install.packages("devtools")
 devtools::install_github("swirldev/swirl", ref = "dev")
 ```
 
 Then to install this course and get started simply run:
- 
- ```
+
+```
 library(swirl)
-install_course_github("jonmcalder", "Regular_Expressions")
+install_course("Regular Expressions")
 swirl()
+```
+
+Not that the above will install the course from the [Swirl Course Network](http://swirlstats.com/scn/regular_expressions.html). To install the most up to date version of the course directly from this repo use:
+
+```
+install_course_github("jonmcalder", "Regular_Expressions")
 ```
 
 ## Overview
@@ -49,9 +55,9 @@ other programming languages.
 
 ## Contribute
 
-At the moment this course is still very much a work in progress but please feel 
-free to give it a try in its current state and report any problems you have or 
-leave suggestions for improvement on the 
+In it's current form this course covers most of the basics for regular expressions 
+but can hopefully become more comprehensive over time. Please give it a try and 
+report any problems you have or leave suggestions for improvement on the 
 [issues page](https://github.com/jonmcalder/Regular_Expressions/issues) as you 
 work through the lessons.
 
@@ -62,10 +68,7 @@ If you are able to submit a pull request that would be even better! :-)
 Big thanks to the swirl developers 
 @[ncarchedi](https://github.com/ncarchedi), 
 @[seankross](https://github.com/seankross), and 
-@[WilCrofter](https://github.com/WilCrofter) as well as many others who have 
+@[WilCrofter](https://github.com/WilCrofter) (who did an excellent job with documentation) as well as many others who have 
 contributed code and/or learning content to swirl.
 
-I would like to commend them not only for the ease of use of both swirl and 
-swirlify, but especially for the excellent documentation surrounding the 
-learning and teaching components of this 'platform' as these are essential for 
-anyone looking to get started.
+Thanks also to [Joel Gombin](https://twitter.com/joelgombin) for reviewing this course and offering some feedback.
