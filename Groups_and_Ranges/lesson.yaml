@@ -13,7 +13,12 @@
     
 - Class: text
   Output: The key metacharacters here are square and round brackets - "[", "]", 
-    "(" and ")". Square brackets are used to define a set or range of 
+    "(" and ")". Square brackets are used for ranges within a regular expression, 
+    and round brackets (or parentheses) are used to create groups within a regular 
+    expression. First we'll look at ranges.
+    
+- Class: text
+  Output: Square brackets are used to define a set or range of 
     characters, where one (or more) must usually be matched in the text. For 
     example, the pattern "[abc]" will match any text which contains either an "a"
     or a "b" or "c" (as opposed to the pattern "abc" which would only match text
@@ -64,11 +69,38 @@
   CorrectAnswer: pattern = "[A-z]"
   AnswerTests: omnitest(correctVal='pattern = "[A-z]"')
   Hint: Don't forget about special characters.
-
+  
+- Class: text
+  Output: Now let's look at groups. To create a group within a regular expression,
+    one simply wraps part of the expression in a set of parentheses. For example, 
+    the pattern "item_[0-1][1-9][a-z]" matches strings like "item_01a", 
+    "item_10b", "item_19c" etc. The pattern "item_([0-1][1-9])([a-z])" is 
+    entirely equivalent, except it also captures the the item number (e.g. '01') 
+    and item letter (e.g. 'b') as groups within this pattern.
+    
+- Class: text
+  Output: These groups can then be referenced within the match and/or have other 
+    regex operators applied to them. In R, the captured groups can be referenced 
+    with '\\1', '\\2' up to '\\9'.
+    
+- Class: text
+  Output: So for example, using R's `sub()` function outlined in one of the earlier 
+    lessons one could transform these strings to make the numbering more explicit 
+    (remember `sub()` takes a pattern and replacement value and replaces the 
+    matched pattern with the replacement value).
+    
+- Class: mult_question
+  Output: What do you expect the output of 
+    sub("item_([0-1][1-9])([a-z])", "item_num_\\1_sec_\\2", "item_02c") to be?
+  AnswerChoices: item_num_02_sec_c;item_num_sec_02c
+  CorrectAnswer: item_num_02_sec_c
+  AnswerTests: omnitest(correctVal="item_num_02_sec_c")
+  Hint: The output should contain 'num' before the digits and 'sec' before the letter.
+  
 - Class: text
   Output: In the next lesson, we'll explore the use of quantifiers in regular 
     expressions. Quantifiers specify how many repetitions of a pattern should be 
-    matched.
+    matched, and are often used in combination with groups and ranges.
     
 - Class: mult_question
   Output: Are you happy to submit the log of this lesson to the course author 
