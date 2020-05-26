@@ -92,33 +92,33 @@
     examples of this by looking at some common regular expressions.
     
 - Class: mult_question
-  Output: What is represented by the following regular expression - "^\d+$"
+  Output: What is represented by the following regular expression - "^\\d+$"
   AnswerChoices: Positive Integer;Negative Number;Positive/Negative Integer
   CorrectAnswer: Positive Integer
   AnswerTests: omnitest(correctVal="Positive Integer")
   Hint: start of string (anchor) - "^", 
-    one or more digit characters (character class & quantifier) - "\d+", 
+    one or more digit characters (character class & quantifier) - "\\d+", 
     end of string (anchor) - "$"
 
 - Class: mult_question
-  Output: What is represented by the following regular expression - "^-?\d+$"
+  Output: What is represented by the following regular expression - "^-?\\d+$"
   AnswerChoices: Positive Number;Negative Number;Positive/Negative Integer
   CorrectAnswer: Positive/Negative Integer
   AnswerTests: omnitest(correctVal="Positive/Negative Integer")
   Hint: start of string (anchor) - "^", 
     optional negative sign (character & quantifier) - "-?", 
-    one or more digit characters (character class & quantifier) - "\d+", 
+    one or more digit characters (character class & quantifier) - "\\d+", 
     end of string (anchor) - "$"
 
 - Class: mult_question
-  Output: What is represented by the following regular expression - "^-\d*\.?\d+$"
+  Output: What is represented by the following regular expression - "^-\\d*\\.?\\d+$"
   AnswerChoices: Positive Number;Negative Number;Positive/Negative Number
   CorrectAnswer: Negative Number
   AnswerTests: omnitest(correctVal="Negative Number")
   Hint: start of string (anchor) - "^", negative sign - "-", 
-    zero or more digit characters (character class & quantifier) - "\d*", 
-    optional period (escaped special character & quantifier) - "\.?",
-    one or more digit characters  (character class & quantifier) - "\d+",
+    zero or more digit characters (character class & quantifier) - "\\d*", 
+    optional period (escaped special character & quantifier) - "\\.?",
+    one or more digit characters  (character class & quantifier) - "\\d+",
     end of string (anchor) - "$"
 
 - Class: mult_question

@@ -12,59 +12,59 @@
     easily match words, spaces, digits etc.
     
 - Class: text
-  Output: There are actually two flavors of character classes. One uses "[:" and
-    ":]" around a predefined name inside square brackets and the other uses "\" 
-    along with a special character. In many cases these are interchangeable as 
-    we'll soon see.
+  Output: There are actually two flavors of character classes which are 
+    interchangeable in many cases as we'll soon see. One uses "[:" and
+    ":]" around a predefined name which must be used inside square brackets and 
+    the other uses "\" along with a special character. In R this backslash needs 
+    to be escaped with an additional backslash.
   
 - Class: cmd_question
-  Output: You can indicate a digit character with "[:digit:]" (or alternatively 
-    with "\d"). We have created a vector of alphanumeric characters in the 
-    'passwords' object. Use grepl to check which of these passwords contain 
-    digits.
-  CorrectAnswer: grepl(pattern = "[:digit:]", x = passwords)
-  AnswerTests: omnitest(correctExpr="grepl(pattern = '[:digit:]', x = passwords)")
-    # include "\d" answer variant?
-  Hint: Simply use grepl with pattern = "[:digit:]"
+  Output: You can indicate a digit character with "[[:digit:]]" (note the double 
+    square brackets), or alternatively with "\\d" (note the double backslash). We 
+    have created a vector of alphanumeric characters in the 'passwords' object. 
+    Use grepl to check which of these passwords contain digits.
+  CorrectAnswer: grepl(pattern = "[[:digit:]]", x = passwords)
+  AnswerTests: calculates_same_value("grepl(pattern = '[[:digit:]]', x = passwords)")
+  Hint: Simply use grepl with pattern = "[[:digit:]]"
 
 - Class: cmd_question
-  Output: You can indicate a non-digit character with "\D". Use grepl to check 
+  Output: You can indicate a non-digit character with "\\D". Use grepl to check 
     which of these passwords start with a non-digit character.
   CorrectAnswer: grepl(pattern = "^\\D", x = passwords)
-  AnswerTests: omnitest(correctExpr="grepl(pattern = '^\x5c\x5cD', x = passwords)")
+  AnswerTests: calculates_same_value("grepl(pattern = '^\x5c\x5cD', x = passwords)")
   Hint: Simply use grepl with a pattern which combines the 'starts with' anchor 
     ("^") with "\\D"
   
 - Class: cmd_question
-  Output: You can match any lower-case letter character with "[:lower:]". Use 
+  Output: You can match any lower-case letter character with "[[:lower:]]". Use 
     grepl to check which of the passwords contain a lower-case character.
-  CorrectAnswer: grepl(pattern = "[:lower:]", x = passwords)
-  AnswerTests: omnitest(correctExpr="grepl(pattern = '[:lower:]', x = passwords)")
-  Hint: pattern = "[:lower:]"
+  CorrectAnswer: grepl(pattern = "[[:lower:]]", x = passwords)
+  AnswerTests: omnitest(correctExpr="grepl(pattern = '[[:lower:]]', x = passwords)")
+  Hint: pattern = "[[:lower:]]"
   
 - Class: cmd_question
   Output: Next try and check which of the passwords begin with a lower-case 
     character.
-  CorrectAnswer: grepl(pattern = "^[:lower:]", x = passwords)
-  AnswerTests: omnitest(correctExpr="grepl(pattern = '^[:lower:]', x = passwords)")
+  CorrectAnswer: grepl(pattern = "^[[:lower:]]", x = passwords)
+  AnswerTests: omnitest(correctExpr="grepl(pattern = '^[[:lower:]]', x = passwords)")
   Hint: Remember the "^" anchor from the previous lesson? Simply combine "^" 
-    and "[:lower:]" in the regex pattern.
+    and "[[:lower:]]" in the regex pattern.
   
 - Class: cmd_question
-  Output: You can match any upper-case letter character with "[:upper:]". Use 
+  Output: You can match any upper-case letter character with "[[:upper:]]". Use 
     grepl to check which of the passwords contain an upper-case character.
-  CorrectAnswer: grepl(pattern = "[:upper:]", x = passwords)
-  AnswerTests: omnitest(correctExpr="grepl(pattern = '[:upper:]', x = passwords)")
-  Hint: pattern = "[:upper:]"
+  CorrectAnswer: grepl(pattern = "[[:upper:]]", x = passwords)
+  AnswerTests: omnitest(correctExpr="grepl(pattern = '[[:upper:]]', x = passwords)")
+  Hint: pattern = "[[:upper:]]"
   
 - Class: cmd_question
   Output: Now check which of the passwords end with an upper-case character.
-  CorrectAnswer: grepl(pattern = "[:upper:]$", x = passwords)
-  AnswerTests: omnitest(correctExpr="grepl(pattern = '[:upper:]$', x = passwords)")
-  Hint: Simply combine "$" and "[:upper:]" in the regex pattern.
+  CorrectAnswer: grepl(pattern = "[[:upper:]]$", x = passwords)
+  AnswerTests: omnitest(correctExpr="grepl(pattern = '[[:upper:]]$', x = passwords)")
+  Hint: Simply combine "$" and "[[:upper:]]" in the regex pattern.
   
 - Class: text
-  Output: The pattern "[:alpha:]" will match any alphabetic characters (lower or
+  Output: The pattern "[[:alpha:]]" will match any alphabetic characters (lower or
     upper-case), and is thus equivalent to "[[:lower:][:upper:]]", or 
     "[[A-Z][a-z]]".
   
@@ -77,9 +77,9 @@
     these since it is a two character pattern.
   
 - Class: mult_question
-  Output: The pattern "[:alnum:]" matches any alphanumeric characters - in other 
+  Output: The pattern "[[:alnum:]]" matches any alphanumeric characters - in other 
     words alphabetic characters plus digit characters. Which of the below patterns
-    is equivalent to "[:alnum:]"?
+    is equivalent to "[[:alnum:]]"?
   AnswerChoices: pattern = "[[:alpha:][:digit:]]"; pattern = "[:alpha:][:digit:]";
     pattern = "[:alpha:][0-9]"; pattern = "[[a-z][0-9]]"
   CorrectAnswer: pattern = "[[:alpha:][:digit:]]"
@@ -88,13 +88,13 @@
     and these need to be combined into a single character pattern.
     
 - Class: text
-  Output: Another equivalent expression for "[:alnum:]" is "[A-z0-9]". This relies
+  Output: Another equivalent expression for "[[:alnum:]]" is "[A-z0-9]". This relies
     on the use of "[A-z]" in place of "[[A-Z][a-z]]".
   
 - Class: mult_question
-  Output: The expression "[:xdigit:]" can be used to match hexadecimal digits 
+  Output: The expression "[[:xdigit:]]" can be used to match hexadecimal digits 
     i.e. 0 1 2 3 4 5 6 7 8 9 A B C D E F a b c d e f. Which of the below 
-    patterns is equivalent to "[:xdigit:]"?
+    patterns is equivalent to "[[:xdigit:]]"?
   AnswerChoices: pattern = "[A-F0-9a-f]"; pattern = "[[0-9][a-f]]"; 
     pattern = "[[:alpha:][0-9]]"; pattern = "[[0-9][A-F]]"
   CorrectAnswer: pattern = "[A-F0-9a-f]"
