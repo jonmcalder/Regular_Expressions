@@ -92,7 +92,7 @@
     can include the metacharacter "$" at the end of the pattern string. So for 
     example pattern = "mice$" would match the text string 
     "Three blind mice, three blind mice", but not the text string 
-    "Did you ever see such a thing in your life, As three blind mice!". What 
+    "Did you ever see such a thing in your life, As three blind mice?". What 
     pattern would match "I" exclusively at the end of the text string?
   AnswerChoices: pattern = 'I';pattern = '$I'; pattern = 'I$' 
   CorrectAnswer: pattern = 'I$'

@@ -10,9 +10,11 @@
   Output: In base R, there are seven 'primary' functions which leverage the 
     power of regular expressions to achieve slightly different outcomes. They 
     are grep, grepl, regexpr, gregexpr, regexec, sub and gsub. These all use 
-    overlapping and/or similar input parameters, and differ mainly in terms of 
-    functionality and the type of output they provide.
-    
+    overlapping or similar input parameters but differ in terms of functionality 
+    and the type of output they provide, and generally originate from similar 
+    commands in UNIX systems (e.g. see https://en.wikipedia.org/wiki/Grep) or 
+    elsewhere.
+
 - Class: text
   Output: Note that as with most/all things in R, these functions are 
     vectorized. grep, grepl, regexpr, gregexpr and regexec search for matches to 

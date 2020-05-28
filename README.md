@@ -66,9 +66,6 @@ If you are able to submit a pull request that would be even better! :-)
 ## Thanks
 
 Big thanks to the swirl developers 
-@[ncarchedi](https://github.com/ncarchedi), 
-@[seankross](https://github.com/seankross), and 
-@[WilCrofter](https://github.com/WilCrofter) (who did an excellent job with documentation) as well as many others who have 
-contributed code and/or learning content to swirl.
+@[ncarchedi](https://github.com/ncarchedi), @[seankross](https://github.com/seankross), and @[WilCrofter](https://github.com/WilCrofter) (who did an excellent job with documentation) as well as many others who have contributed code and/or learning content to swirl.
 
-Thanks also to [Joel Gombin](https://twitter.com/joelgombin) for reviewing this course and offering some feedback.
+Thanks also to [Joel Gombin](https://twitter.com/joelgombin), [Lorenz Walthert](https://twitter.com/lorenzwalthert) & [Gavin Masterson](https://twitter.com/gavinprm) for reviewing this course and offering feedback.
