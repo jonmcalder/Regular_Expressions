@@ -112,6 +112,9 @@
 
 - Class: mult_question
   Output: What is represented by the following regular expression - "^-\\d*\\.?\\d+$"
+    (note that in regex the dot "." is a special wildcard character - a placeholder for 
+    any single character - but here it has been escaped with backslashes "\\." in order 
+    to represent a literal period ".")
   AnswerChoices: Positive Number;Negative Number;Positive/Negative Number
   CorrectAnswer: Negative Number
   AnswerTests: omnitest(correctVal="Negative Number")
